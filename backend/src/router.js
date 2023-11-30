@@ -26,26 +26,28 @@ router.get("/cars", (req, res) => {
     });
 });
 
-// router.get("/garages/:id", (req, res) => {
-//     const id = +req.params.id;
-//     const query = `
-//     SELECT cars.*, fonction.*
-//     FROM cars
-//     LEFT JOIN fonction ON cars.garage_id = fonction.garage_id
-//     WHERE cars.garage_id = $1
-//   `;
-//     .then(([garage]) => {
-//       if (garage[0] != null) {
-//         res.status(200).json(garage[0]);
-//       } else {
-//         res.sendStatus(404);
-//       }
-//     })
-//     .catch((error) => {
-//       console.error(error);
-//       res.sendStatus(500);
-//     });
-// });
+router.get("/cars/:id", (req, res) => {
+  const carId = req.params.id;
+  const query = `
+      SELECT car.*, fonction.*
+      FROM car
+      RIGHT JOIN fonction ON car.fonction_id = fonction.id
+      WHERE car.id = ?
+    `;
+  client
+    .query(query, [carId])
+    .then((result) => {
+      if (result[0].length === 0) {
+        res.status(404).json({ message: "Rien trouvé" });
+      } else {
+        res.status(200).json(result[0]);
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+});
 
 // Route to get a specific item by ID
 router.get("/items/:id", itemControllers.read);
