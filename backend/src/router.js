@@ -40,7 +40,7 @@ router.get("/cars/:id", (req, res) => {
       if (result[0].length === 0) {
         res.status(404).json({ message: "Rien trouvé" });
       } else {
-        res.status(200).json(result[0]);
+        res.status(200).json(result[0][0]);
       }
     })
     .catch((err) => {
