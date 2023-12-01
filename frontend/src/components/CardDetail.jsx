@@ -1,5 +1,5 @@
 import React from "react";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 
 function CardDetail() {
   const car = useLoaderData();
@@ -7,7 +7,9 @@ function CardDetail() {
     <div>
       <p>{car.brand}</p>
       <p>{car.engine}</p>
-      <img src={car.image} alt={car.brand} />
+      <Link to="/">
+        <img src={car.image} alt={car.brand} />
+      </Link>
       <p>{car.label}</p>
     </div>
   );
