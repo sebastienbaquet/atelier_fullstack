@@ -9,7 +9,7 @@ const router = express.Router();
 /* ************************************************************************* */
 
 // Import itemControllers module for handling item-related operations
-const carControllers = require("./controllers/CarControllers");
+const carControllers = require("./controllers/carControllers");
 
 // Route to get a list of items
 router.get("/cars", carControllers.browse);
@@ -17,7 +17,7 @@ router.get("/cars", carControllers.browse);
 router.get("/cars/:id", carControllers.read);
 
 // Route to add a new item
-// router.post("/cars", CarController.add);
+router.post("/cars", carControllers.add);
 
 // router.get("/cars", (req, res) => {
 //   client
