@@ -76,6 +76,7 @@ function CarForm() {
           value={formData.fonction_id}
           onChange={handleChange}
         >
+          <option value="">choose</option>
           <option value="1">sport</option>
           <option value="2">SUV</option>
           <option value="3">city_car</option>
