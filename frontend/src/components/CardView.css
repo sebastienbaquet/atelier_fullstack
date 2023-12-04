@@ -1,0 +1,12 @@
+.cart {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  height: 100vh;
+  align-items: center;
+}
+
+.bordering {
+  border-radius: 2rem;
+  border: solid 2px black;
+}
