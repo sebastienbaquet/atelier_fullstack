@@ -12,8 +12,8 @@ class CarManager extends AbstractManager {
   async create(car) {
     // Execute the SQL INSERT query to add a new Car to the "Car" table
     const [result] = await this.database.query(
-      `insert into ${this.table} (title) values (?)`,
-      [car.title]
+      `insert into ${this.table} (brand,engine,image,fonction_id) values (?, ?, ?, ?)`,
+      [car.brand, car.engine, car.image, car.fonction_id]
     );
 
     // Return the ID of the newly inserted Car

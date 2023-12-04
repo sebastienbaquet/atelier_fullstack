@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 function CarForm() {
@@ -6,13 +6,20 @@ function CarForm() {
     brand: "",
     engine: "",
     image: "",
-    label: "",
+    fonction_id: "",
   });
 
+  useEffect(() => {
+    console.info(formData);
+  }, [formData]);
+
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
+    setFormData((prevFormData) => {
+      const updatedFormData = {
+        ...prevFormData,
+        [e.target.name]: e.target.value,
+      };
+      return updatedFormData;
     });
   };
 
@@ -20,7 +27,10 @@ function CarForm() {
     e.preventDefault();
 
     try {
-      const response = await axios.post("/api/cars", formData);
+      const response = await axios.post(
+        `${import.meta.env.VITE_BACKEND_URL}/api/cars`,
+        formData
+      );
       console.info("Nouvelle voiture ajouté:", response.data);
     } catch (error) {
       console.error("Erreur lors de l'ajout d'une voiture':", error);
@@ -61,11 +71,15 @@ function CarForm() {
       <br />
       <label>
         Fonction:
-        <select name="label" value={formData.label} onChange={handleChange}>
-          <option value="sport">sport</option>
-          <option value="SUV">SUV</option>
-          <option value="city_car">city_car</option>
-          <option value="road">road</option>
+        <select
+          name="fonction_id"
+          value={formData.fonction_id}
+          onChange={handleChange}
+        >
+          <option value="1">sport</option>
+          <option value="2">SUV</option>
+          <option value="3">city_car</option>
+          <option value="4">road</option>
         </select>
       </label>
       <button type="submit">Ajouter</button>
