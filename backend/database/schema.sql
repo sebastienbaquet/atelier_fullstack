@@ -17,10 +17,8 @@ create table car(
 
 
 
-INSERT INTO fonction(label) VALUES ('sport');
-INSERT INTO fonction(label) VALUES ('suv');
-INSERT INTO fonction(label) VALUES ('city_car');
-INSERT INTO fonction(label) VALUES ('road');
+INSERT INTO fonction(label) VALUES ('sport'),('suv'),('city_car'),('road');
+
 
 
 INSERT INTO car(brand,engine,image,fonction_id) VALUES ('lamborgini','essence','https://tse3.mm.bing.net/th?id=OIP.uuBl43Wh2pNV_Vj92QzfCAHaEK&pid=Api&P=0&h=180',1);

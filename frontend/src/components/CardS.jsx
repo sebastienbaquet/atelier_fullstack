@@ -6,7 +6,7 @@ function CardS() {
   const cars = useLoaderData();
 
   return (
-    <div>
+    <div className="cart">
       {cars.map((car) => (
         <CardView key={car.id} car={car} />
       ))}
