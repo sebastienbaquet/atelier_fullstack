@@ -13,11 +13,19 @@ const carControllers = require("./controllers/carControllers");
 
 // Route to get a list of items
 router.get("/cars", carControllers.browse);
+
+const fonctionControllers = require("./controllers/fonctionControllers");
+
+router.get("/fonctions", fonctionControllers.browse);
+
 // Route to get a specific item by ID
 router.get("/cars/:id", carControllers.read);
 
 // Route to add a new item
 router.post("/cars", carControllers.add);
+
+// Route to update a specific item by ID
+router.put("/cars/:id", carControllers.edit);
 
 // router.get("/cars", (req, res) => {
 //   client
