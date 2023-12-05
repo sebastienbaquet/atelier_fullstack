@@ -8,10 +8,24 @@ function CarForm() {
     image: "",
     fonction_id: "",
   });
+  const getFonctions = async () => {
+    try {
+      const myFonctions = await axios
+        .get(`${import.meta.env.VITE_BACKEND_URL}/api/fonctions`)
+        .then((res) => res.data);
+      console.info(myFonctions);
+    } catch (error) {
+      console.error("Erreur ajout fonction", error);
+    }
+  };
 
   useEffect(() => {
     console.info(formData);
   }, [formData]);
+
+  useEffect(() => {
+    getFonctions();
+  }, []);
 
   const handleChange = (e) => {
     setFormData((prevFormData) => {
