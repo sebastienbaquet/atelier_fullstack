@@ -5,10 +5,10 @@ const tables = require("../tables");
 const browse = async (req, res, next) => {
   try {
     // Fetch all items from the database
-    const cars = await tables.car.readAll();
+    const fonctions = await tables.fonction.readAll();
 
-    // Respond with the cars in JSON format
-    res.json(cars);
+    // Respond with the fonctions in JSON format
+    res.json(fonctions);
   } catch (err) {
     // Pass any errors to the error-handling middleware
     next(err);
@@ -18,15 +18,15 @@ const browse = async (req, res, next) => {
 // The R of BREAD - Read operation
 const read = async (req, res, next) => {
   try {
-    // Fetch a specific car from the database based on the provided ID
-    const car = await tables.car.read(req.params.id);
+    // Fetch a specific fonction from the database based on the provided ID
+    const fonction = await tables.fonction.read(req.params.id);
 
-    // If the car is not found, respond with HTTP 404 (Not Found)
-    // Otherwise, respond with the car in JSON format
-    if (car == null) {
+    // If the fonction is not found, respond with HTTP 404 (Not Found)
+    // Otherwise, respond with the fonction in JSON format
+    if (fonction == null) {
       res.sendStatus(404);
     } else {
-      res.json(car);
+      res.json(fonction);
     }
   } catch (err) {
     // Pass any errors to the error-handling middleware
@@ -36,15 +36,15 @@ const read = async (req, res, next) => {
 
 // The E of BREAD - Edit (Update) operation
 const edit = async (req, res, next) => {
-  // Extract the car data from the request body
-  const car = req.body;
-  const carId = req.params.id;
+  // Extract the fonction data from the request body
+  const fonction = req.body;
+  const fonctionId = req.params.id;
 
   try {
-    // Update the car in the database
-    const affectedRows = await tables.car.update(carId, car);
+    // Update the fonction in the database
+    const affectedRows = await tables.fonction.update(fonctionId, fonction);
 
-    // If no rows are affected, the car was not found
+    // If no rows are affected, the fonction was not found
     if (affectedRows === 0) {
       res.sendStatus(404);
     } else {
@@ -60,12 +60,12 @@ const edit = async (req, res, next) => {
 
 // The A of BREAD - Add (Create) operation
 const add = async (req, res, next) => {
-  // Extract the car data from the request body
-  const car = req.body;
+  // Extract the fonction data from the request body
+  const fonction = req.body;
 
   try {
-    // Insert the car into the database
-    const insertId = await tables.car.create(car);
+    // Insert the fonction into the database
+    const insertId = await tables.fonction.create(fonction);
 
     // Respond with HTTP 201 (Created) and the ID of the newly inserted item
     res.status(201).json({ insertId });

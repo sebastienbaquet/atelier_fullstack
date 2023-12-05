@@ -44,6 +44,17 @@ class CarManager extends AbstractManager {
   }
 
   // The U of CRUD - Update operation
+  async update(id, car) {
+    // Execute the SQL UPDATE query to modify an existing Car
+    const result = await this.database.query(
+      `UPDATE ${this.table} SET brand=?, engine=?, image=?, fonction_id=? WHERE id=?`,
+      [car.brand, car.engine, car.image, car.fonction_id, id]
+    );
+
+    // Return the number of affected rows
+    return result.affectedRows;
+  }
+
   // TODO: Implement the update operation to modify an existing Car
 
   // async update(Car) {
