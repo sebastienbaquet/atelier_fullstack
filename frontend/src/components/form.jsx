@@ -8,12 +8,13 @@ function CarForm() {
     image: "",
     fonction_id: "",
   });
+  const [fonctions, setFonctions] = useState([]);
   const getFonctions = async () => {
     try {
       const myFonctions = await axios
         .get(`${import.meta.env.VITE_BACKEND_URL}/api/fonctions`)
         .then((res) => res.data);
-      console.info(myFonctions);
+      setFonctions(myFonctions);
     } catch (error) {
       console.error("Erreur ajout fonction", error);
     }
@@ -85,16 +86,13 @@ function CarForm() {
       <br />
       <label>
         Fonction:
-        <select
-          name="fonction_id"
-          value={formData.fonction_id}
-          onChange={handleChange}
-        >
+        <select name="fonction_id" onChange={handleChange} required>
           <option value="">choose</option>
-          <option value="1">sport</option>
-          <option value="2">SUV</option>
-          <option value="3">city_car</option>
-          <option value="4">road</option>
+          {fonctions.map((fonction) => (
+            <option key={fonction.id} value={fonction.id}>
+              {fonction.label}
+            </option>
+          ))}
         </select>
       </label>
       <button type="submit">Ajouter</button>
