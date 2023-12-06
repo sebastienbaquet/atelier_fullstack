@@ -9,7 +9,7 @@ const router = express.Router();
 /* ************************************************************************* */
 
 // Import itemControllers module for handling item-related operations
-const carControllers = require("./controllers/carControllers");
+const carControllers = require("./controllers/CaraControllers");
 
 // Route to get a list of items
 router.get("/cars", carControllers.browse);
@@ -26,6 +26,8 @@ router.post("/cars", carControllers.add);
 
 // Route to update a specific item by ID
 router.put("/cars/:id", carControllers.edit);
+
+router.delete("/cars/:id", carControllers.destroy);
 
 // router.get("/cars", (req, res) => {
 //   client

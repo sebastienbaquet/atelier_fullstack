@@ -76,7 +76,28 @@ const add = async (req, res, next) => {
 };
 
 // The D of BREAD - Destroy (Delete) operation
-// This operation is not yet implemented
+// The D of BREAD - Destroy (Delete) operation
+const destroy = async (req, res, next) => {
+  // Extract thecarId data from the request body
+  const carId = req.params.id;
+
+  try {
+    // Insert thecar into the database
+    const deleteId = await tables.car.delete(carId);
+
+    // Check the result of the deletion
+    if (deleteId.message === "Delete successful") {
+      // Respond with HTTP 200 (OK) and a success message
+      res.status(204).json({ message: "Delete successful" });
+    } else {
+      // Respond with HTTP 404 (Not Found) if thecar was not found
+      res.status(404).json({ message: "car not found or has dependencies" });
+    }
+  } catch (err) {
+    // Pass any errors to the error-handling middleware
+    next(err);
+  }
+};
 
 // Ready to export the controller functions
 module.exports = {
@@ -85,5 +106,6 @@ module.exports = {
   // edit,
   add,
   edit,
+  destroy,
   // destroy,
 };
