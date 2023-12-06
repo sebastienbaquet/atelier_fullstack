@@ -25,7 +25,7 @@ class CarManager extends AbstractManager {
   async read(id) {
     // Execute the SQL SELECT query to retrieve a specific Car by its ID
     const [rows] = await this.database.query(
-      `SELECT car.*, fonction.*
+      `SELECT car.*, fonction.label as fonction_label
       FROM ${this.table} RIGHT JOIN fonction ON car.fonction_id = fonction.id
       WHERE car.id = ?`,
       [id]
@@ -62,6 +62,24 @@ class CarManager extends AbstractManager {
   // }
 
   // The D of CRUD - Delete operation
+  async delete(id) {
+    try {
+      // Execute the SQL DELETE query to delete a specific car by its ID
+      const result = await this.database.query(
+        `DELETE FROM ${this.table} WHERE id = ?`,
+        [id]
+      );
+
+      // Check the affectedRows property to verify if the deletion was successful
+      if (result && result.affectedRows > 0)
+        return { message: "Delete successful" };
+      return { message: "car not found" };
+    } catch (error) {
+      // Handle the error, log it, etc.
+      console.error("Error deleting car:", error.message);
+      return { message: "Error deleting car" };
+    }
+  }
   // TODO: Implement the delete operation to remove an Car by its ID
 
   // async delete(id) {

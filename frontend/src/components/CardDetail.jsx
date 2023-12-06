@@ -11,7 +11,7 @@ function CardDetail() {
       </Link>
       <p>{car.brand}</p>
       <p>{car.engine}</p>
-      <p>{car.label}</p>
+      <p>{car.fonction_label}</p>
     </div>
   );
 }
