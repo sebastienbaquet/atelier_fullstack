@@ -37,7 +37,10 @@ class CarManager extends AbstractManager {
 
   async readAll() {
     // Execute the SQL SELECT query to retrieve all Cars from the "Car" table
-    const [rows] = await this.database.query(`select * from ${this.table}`);
+    const [rows] = await this.database
+      .query(`SELECT car.*, fonction.label as fonction_label 
+    FROM ${this.table} 
+    LEFT JOIN fonction ON car.fonction_id = fonction.id`);
 
     // Return the array of Cars
     return rows;
