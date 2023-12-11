@@ -10,3 +10,7 @@
   border-radius: 2rem;
   border: solid 2px black;
 }
+.all {
+  display: flex;
+  justify-content: space-around;
+}
