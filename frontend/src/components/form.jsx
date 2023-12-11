@@ -68,9 +68,10 @@ function CarForm() {
 
   const deleteCar = async (id) => {
     try {
-      const response = await axios.post(
+      const response = await axios.delete(
         `${import.meta.env.VITE_BACKEND_URL}/api/cars/${id}`
       );
+      getCars();
       console.info("Nouvelle voiture effacer:", response.data);
     } catch (error) {
       console.error("Erreur lors de la suppression d'une voiture':", error);

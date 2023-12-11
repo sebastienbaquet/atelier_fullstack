@@ -80,19 +80,13 @@ const add = async (req, res, next) => {
 const destroy = async (req, res, next) => {
   // Extract thecarId data from the request body
   const carId = req.params.id;
-
   try {
     // Insert thecar into the database
-    const deleteId = await tables.car.delete(carId);
-
+    await tables.car.delete(carId);
     // Check the result of the deletion
-    if (deleteId.message === "Delete successful") {
-      // Respond with HTTP 200 (OK) and a success message
-      res.status(204).json({ message: "Delete successful" });
-    } else {
-      // Respond with HTTP 404 (Not Found) if thecar was not found
-      res.status(404).json({ message: "car not found or has dependencies" });
-    }
+    // Respond with HTTP 200 (OK) and a success message
+    res.sendStatus(204);
+    // Respond with HTTP 404 (Not Found) if thecar was not found
   } catch (err) {
     // Pass any errors to the error-handling middleware
     next(err);
