@@ -38,19 +38,14 @@ const read = async (req, res, next) => {
 const edit = async (req, res, next) => {
   // Extract the car data from the request body
   const car = req.body;
-  const carId = req.params.id;
-
   try {
     // Update the car in the database
-    const affectedRows = await tables.car.update(carId, car);
-
+    await tables.car.update(req.params.id, car);
     // If no rows are affected, the car was not found
-    if (affectedRows === 0) {
-      res.sendStatus(404);
-    } else {
-      // Respond with HTTP 200 (OK)
-      res.sendStatus(200);
-    }
+
+    res.sendStatus(204);
+
+    // Respond with HTTP 200 (OK)
   } catch (err) {
     // Pass any errors to the error-handling middleware
     next(err);
@@ -97,9 +92,7 @@ const destroy = async (req, res, next) => {
 module.exports = {
   browse,
   read,
-  // edit,
   add,
   edit,
   destroy,
-  // destroy,
 };

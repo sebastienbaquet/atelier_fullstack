@@ -6,7 +6,7 @@ function CarForm() {
     brand: "",
     engine: "",
     image: "",
-    fonction_id: "",
+    fonction_id: null,
   });
   const [fonctions, setFonctions] = useState([]);
   const [Cars, setCars] = useState([]);
@@ -43,13 +43,17 @@ function CarForm() {
   }, []);
 
   const handleChange = (e) => {
-    setFormData((prevFormData) => {
-      const updatedFormData = {
+    if (e.target.name === "fonction_id") {
+      setFormData((prevFormData) => ({
+        ...prevFormData,
+        [e.target.name]: +e.target.value,
+      }));
+    } else {
+      setFormData((prevFormData) => ({
         ...prevFormData,
         [e.target.name]: e.target.value,
-      };
-      return updatedFormData;
-    });
+      }));
+    }
   };
 
   const handleSubmit = async (e) => {
@@ -60,6 +64,7 @@ function CarForm() {
         `${import.meta.env.VITE_BACKEND_URL}/api/cars`,
         formData
       );
+      getCars();
       console.info("Nouvelle voiture ajouté:", response.data);
     } catch (error) {
       console.error("Erreur lors de l'ajout d'une voiture':", error);
@@ -78,9 +83,34 @@ function CarForm() {
     }
   };
 
+  const putCar = async (event) => {
+    event.preventDefault();
+    try {
+      await axios.put(
+        `${import.meta.env.VITE_BACKEND_URL}/api/cars/${formData.id}`,
+        formData
+      );
+      getCars();
+    } catch (error) {
+      console.error("Erreur lors de la modification d'une voiture':", error);
+    }
+  };
+
+  const loadCar = (car) => {
+    setFormData(car);
+  };
+
+  const handleRequest = (e) => {
+    if (formData.id) {
+      putCar(e);
+    } else {
+      handleSubmit(e);
+    }
+  };
+
   return (
     <div className="all">
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleRequest}>
         <label>
           Brand:
           <input
@@ -113,7 +143,12 @@ function CarForm() {
         <br />
         <label>
           Fonction:
-          <select name="fonction_id" onChange={handleChange} required>
+          <select
+            name="fonction_id"
+            onChange={handleChange}
+            required
+            value={formData.fonction_id}
+          >
             <option value="">choose</option>
             {fonctions.map((fonction) => (
               <option key={fonction.id} value={fonction.id}>
@@ -122,7 +157,7 @@ function CarForm() {
             ))}
           </select>
         </label>
-        <button type="submit">Ajouter</button>
+        <button type="submit"> {formData.id ? "modifier " : "ajouter"} </button>
       </form>
       <section className="modif">
         <h2> Toutes les voitures</h2>
@@ -156,7 +191,11 @@ function CarForm() {
                     >
                       delete
                     </button>
-                    <button className="modifier" type="button">
+                    <button
+                      className="modifier"
+                      type="button"
+                      onClick={() => loadCar(car)}
+                    >
                       modifier
                     </button>
                   </td>
