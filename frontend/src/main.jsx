@@ -12,12 +12,6 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
-    loader: () => {
-      return axios
-        .get(`${import.meta.env.VITE_BACKEND_URL}/api/cars`)
-        .then((res) => res.data)
-        .catch((err) => console.error(err));
-    },
   },
   {
     path: "/cars",

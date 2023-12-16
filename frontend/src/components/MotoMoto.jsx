@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import Moto from "./Moto";
+import FormMotor from "./FormMotor";
 
 function MotoMoto() {
   const navigate = useNavigate();
@@ -11,6 +12,7 @@ function MotoMoto() {
 
   return (
     <div>
+      <FormMotor />
       <Moto />
       <button type="button" onClick={handleReturnToApp}>
         Retourner
