@@ -6,7 +6,7 @@ function CardDetail() {
   const car = useLoaderData();
   return (
     <div className="cartdetail">
-      <Link to="/">
+      <Link to="/cars">
         <img src={car.image} alt={car.brand} />
       </Link>
       <p>{car.brand}</p>

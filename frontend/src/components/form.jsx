@@ -91,6 +91,12 @@ function CarForm() {
         formData
       );
       getCars();
+      setFormData({
+        brand: "",
+        engine: "",
+        image: "",
+        fonction_id: "",
+      });
     } catch (error) {
       console.error("Erreur lors de la modification d'une voiture':", error);
     }
