@@ -12,8 +12,8 @@ class FonctionManager extends AbstractManager {
   async create(fonction) {
     // Execute the SQL INSERT query to add a new fonction to the "fonction" table
     const [result] = await this.database.query(
-      `insert into ${this.table} (brand,engine,image,fonction_id) values (?, ?, ?, ?)`,
-      [fonction.brand, fonction.engine, fonction.image, fonction.fonction_id]
+      `insert into ${this.table} (label) values (?)`,
+      [fonction.label]
     );
 
     // Return the ID of the newly inserted fonction

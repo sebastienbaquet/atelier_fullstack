@@ -12,8 +12,8 @@ class attributManager extends AbstractManager {
   async create(attribut) {
     // Execute the SQL INSERT query to add a new attribut to the "attribut" table
     const [result] = await this.database.query(
-      `insert into ${this.table} (brand,engine,image,attribut_id) values (?, ?, ?, ?)`,
-      [attribut.brand, attribut.engine, attribut.image, attribut.attribut_id]
+      `insert into ${this.table} (label) values (?)`,
+      [attribut.label]
     );
 
     // Return the ID of the newly inserted attribut

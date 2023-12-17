@@ -21,7 +21,7 @@ const fonctionControllers = require("./controllers/fonctionControllers");
 const AttributControllers = require("./controllers/AttributControllers");
 
 router.get("/fonctions", fonctionControllers.browse);
-router.get("/Attribut", AttributControllers.browse);
+router.get("/Attributs", AttributControllers.browse);
 
 // Route to get a specific item by ID
 router.get("/cars/:id", carControllers.read);
