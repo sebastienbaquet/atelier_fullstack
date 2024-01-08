@@ -12,6 +12,8 @@ const router = express.Router();
 const carControllers = require("./controllers/CaraControllers");
 const motoControllers = require("./controllers/MotoControllers");
 const userControllers = require("./controllers/UserControllers");
+const validateUser = require("./validators/validateUser");
+
 // Route to get a list of items
 router.get("/cars", carControllers.browse);
 // Route to get a list of items
@@ -32,6 +34,7 @@ router.get("/motos/:id", motoControllers.read);
 // Route to add a new item
 router.post("/cars", carControllers.add);
 router.post("/motos", motoControllers.add);
+router.post("/users", validateUser, userControllers.add);
 
 // Route to update a specific item by ID
 

@@ -1,4 +1,5 @@
 // Import access to database tables
+const argon2 = require("argon2");
 const tables = require("../tables");
 
 // The B of BREAD - Browse (Read All) operation
@@ -54,11 +55,18 @@ const edit = async (req, res, next) => {
 // This operation is not yet implemented
 
 // The A of BREAD - Add (Create) operation
+
 const add = async (req, res, next) => {
   // Extract the user data from the request body
   const user = req.body;
 
   try {
+    // Hash the user's password using Argon2
+    const hashedPassword = await argon2.hash(user.haspassword);
+
+    // Replace the plain password with the hashed password
+    user.haspassword = hashedPassword;
+
     // Insert the user into the database
     const insertId = await tables.user.create(user);
 

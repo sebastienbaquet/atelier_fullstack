@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import "./Signup.css";
+import axios from "axios";
 
 function Signup() {
   const [formData, setFormData] = useState({
     email: "",
-    password: "",
+    haspassword: "",
     confirmPassword: "",
   });
 
@@ -16,9 +17,27 @@ function Signup() {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // console.log("Form submitted:", formData);
+    if (formData.haspassword !== formData.confirmPassword) {
+      console.error("Les mots de passe ne correspondent pas.");
+      return;
+    }
+
+    try {
+      const response = await axios.post(
+        `${import.meta.env.VITE_BACKEND_URL}/api/users`,
+        formData
+      );
+
+      if (response.status === 201) {
+        console.info("utilisateur ok!");
+      } else {
+        console.error("utilisateur no");
+      }
+    } catch (error) {
+      console.error("Error:", error.message);
+    }
   };
 
   return (
@@ -41,8 +60,8 @@ function Signup() {
           Password:
           <input
             type="password"
-            name="password"
-            value={formData.password}
+            name="haspassword"
+            value={formData.haspassword}
             onChange={handleChange}
             required
           />
