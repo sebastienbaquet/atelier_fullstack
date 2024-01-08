@@ -7,11 +7,16 @@ import App from "./App";
 import PageOneMoto from "./pages/PageOneMoto";
 import CarCar from "./components/CarCar";
 import MotoMoto from "./components/MotoMoto";
+import Signup from "./components/Signup";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+  },
+  {
+    path: "/Signup",
+    element: <Signup />,
   },
   {
     path: "/cars",

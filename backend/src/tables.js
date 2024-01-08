@@ -8,6 +8,7 @@ const CarManager = require("./models/CarManager");
 const FonctionManager = require("./models/FonctionManager");
 const MotoManager = require("./models/MotoManager");
 const AttributManager = require("./models/AttributManager");
+const UserManager = require("./models/UserManager");
 
 const managers = [
   ItemManager,
@@ -15,6 +16,7 @@ const managers = [
   FonctionManager,
   MotoManager,
   AttributManager,
+  UserManager,
 
   // Add other managers here
 ];

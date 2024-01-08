@@ -18,7 +18,7 @@ function CarForm() {
         .then((res) => res.data);
       setFonctions(myFonctions);
     } catch (error) {
-      console.error("Erreur ajout fonction", error);
+      console.error("Erreur lecture fonction", error);
     }
   };
 
@@ -29,13 +29,13 @@ function CarForm() {
         .then((res) => res.data);
       setCars(myCars);
     } catch (error) {
-      console.error("Erreur ajout fonction", error);
+      console.error("Erreur lecture car", error);
     }
   };
 
-  useEffect(() => {
-    console.info(formData);
-  }, [formData]);
+  // useEffect(() => {
+  //   // console.info(formData);
+  // }, [formData]);
 
   useEffect(() => {
     getFonctions();

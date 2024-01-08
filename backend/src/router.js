@@ -11,11 +11,13 @@ const router = express.Router();
 // Import itemControllers module for handling item-related operations
 const carControllers = require("./controllers/CaraControllers");
 const motoControllers = require("./controllers/MotoControllers");
-
+const userControllers = require("./controllers/UserControllers");
 // Route to get a list of items
 router.get("/cars", carControllers.browse);
 // Route to get a list of items
 router.get("/motos", motoControllers.browse);
+
+router.get("/users", userControllers.browse);
 
 const fonctionControllers = require("./controllers/fonctionControllers");
 const AttributControllers = require("./controllers/AttributControllers");

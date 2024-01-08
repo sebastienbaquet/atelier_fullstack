@@ -1,4 +1,5 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
+import "./App.css";
 
 function App() {
   const navigate = useNavigate();
@@ -13,12 +14,15 @@ function App() {
 
   return (
     <div>
-      <button type="button" onClick={handleShowCarsClick}>
-        Afficher Cars
-      </button>
       <button type="button" onClick={handleShowMotosClick}>
         Afficher Motos
       </button>
+      <button type="button" onClick={handleShowCarsClick}>
+        Afficher car
+      </button>
+      <Link to="/Signup">
+        <button type="button">Connecter</button>
+      </Link>
     </div>
   );
 }
