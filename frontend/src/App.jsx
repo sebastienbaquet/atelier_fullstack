@@ -21,6 +21,9 @@ function App() {
         Afficher car
       </button>
       <Link to="/Signup">
+        <button type="button">s'inscrire</button>
+      </Link>
+      <Link to="/Signin">
         <button type="button">Connecter</button>
       </Link>
     </div>

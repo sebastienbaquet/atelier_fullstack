@@ -8,6 +8,7 @@ import PageOneMoto from "./pages/PageOneMoto";
 import CarCar from "./components/CarCar";
 import MotoMoto from "./components/MotoMoto";
 import Signup from "./components/Signup";
+import Signin from "./components/Signin";
 
 const router = createBrowserRouter([
   {
@@ -17,6 +18,10 @@ const router = createBrowserRouter([
   {
     path: "/Signup",
     element: <Signup />,
+  },
+  {
+    path: "/Signin",
+    element: <Signin />,
   },
   {
     path: "/cars",
