@@ -8,7 +8,7 @@ function NavCar() {
     <div>
       <Link className="nav_container" to="/cars">
         <img className="nav_img" src={CarImage} alt="Borne" />
-        <p className="nav_text"> Moto</p>
+        <p className="nav_text"> Voiture</p>
       </Link>
     </div>
   );

@@ -5,7 +5,7 @@ import FormMotor from "../components/FormMotor";
 function PageOneFomMoto() {
   const navigate = useNavigate();
   const handleReturnToApp = () => {
-    navigate("/");
+    navigate("/motos");
   };
   return (
     <div>

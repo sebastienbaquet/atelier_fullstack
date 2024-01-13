@@ -10,6 +10,7 @@ import MotoMoto from "./components/MotoMoto";
 import Signup from "./components/Signup";
 import Signin from "./components/Signin";
 import PageOneFomMoto from "./pages/PageOneFomMoto";
+import PageOneFormCar from "./pages/PageOneFormCar";
 
 const router = createBrowserRouter([
   {
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
   {
     path: "/motos/formulaire",
     element: <PageOneFomMoto />,
+  },
+  {
+    path: "/cars/formulaire",
+    element: <PageOneFormCar />,
   },
   {
     path: "/cars",

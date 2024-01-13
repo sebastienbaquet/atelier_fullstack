@@ -1,28 +1,21 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import CardS from "./CardS";
+import Form from "../components/form";
 
-function CarCar() {
+function PageOneFormCar() {
   const navigate = useNavigate();
-
   const handleReturnToApp = () => {
-    navigate("/");
+    navigate("/cars");
   };
-  const handleFormulaire = () => {
-    navigate("/cars/formulaire");
-  };
-
   return (
     <div>
-      <CardS />
+      {" "}
+      <Form />
       <button type="button" onClick={handleReturnToApp}>
         Retourner
-      </button>
-      <button type="button" onClick={handleFormulaire}>
-        Formulaire
       </button>
     </div>
   );
 }
 
-export default CarCar;
+export default PageOneFormCar;
