@@ -5,6 +5,9 @@
 }
 
 body {
-  background-image: url("./assets/garage3.avif");
+  background-image: url("./assets/garage5.jpg");
   background-size: cover;
+}
+.Nav {
+  display: flex;
 }

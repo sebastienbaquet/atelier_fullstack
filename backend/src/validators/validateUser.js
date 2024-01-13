@@ -3,7 +3,7 @@ const Joi = require("joi");
 const schema = Joi.object({
   email: Joi.string().required().email(),
   haspassword: Joi.string().required(),
-  confirmPassword: Joi.string().required(),
+  confirmPassword: Joi.any().strip(),
 });
 
 const authSignup = (req, res, next) => {

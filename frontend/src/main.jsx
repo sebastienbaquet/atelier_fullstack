@@ -9,6 +9,7 @@ import CarCar from "./components/CarCar";
 import MotoMoto from "./components/MotoMoto";
 import Signup from "./components/Signup";
 import Signin from "./components/Signin";
+import PageOneFomMoto from "./pages/PageOneFomMoto";
 
 const router = createBrowserRouter([
   {
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
   {
     path: "/Signin",
     element: <Signin />,
+  },
+  {
+    path: "/motos/formulaire",
+    element: <PageOneFomMoto />,
   },
   {
     path: "/cars",

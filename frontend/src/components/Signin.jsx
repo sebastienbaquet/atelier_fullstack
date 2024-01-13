@@ -19,11 +19,11 @@ function Signin() {
     e.preventDefault();
     try {
       const response = await axios.post(
-        `${import.meta.env.VITE_BACKEND_URL}/api/users`,
+        `${import.meta.env.VITE_BACKEND_URL}/api/login`,
         formData
       );
 
-      if (response.status === 201) {
+      if (response.status === 200) {
         console.info("utilisateur ok!");
       } else {
         console.error("utilisateur no");

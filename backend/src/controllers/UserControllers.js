@@ -95,6 +95,24 @@ const destroy = async (req, res, next) => {
     next(err);
   }
 };
+// The R of BREAD - Read operation
+const login = async (req, res, next) => {
+  try {
+    // Fetch a specific user from the database based on the provided ID
+    const user = await tables.user.read(req.body.email);
+
+    // If the user is not found, respond with HTTP 404 (Not Found)
+    // Otherwise, respond with the user in JSON format
+    if (user == null) {
+      res.sendStatus(404);
+    } else {
+      res.json(user);
+    }
+  } catch (err) {
+    // Pass any errors to the error-handling middleware
+    next(err);
+  }
+};
 
 // Ready to export the controller functions
 module.exports = {
@@ -103,4 +121,5 @@ module.exports = {
   add,
   edit,
   destroy,
+  login,
 };

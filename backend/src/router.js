@@ -44,6 +44,8 @@ router.put("/motos/:id", motoControllers.edit);
 router.delete("/cars/:id", carControllers.destroy);
 router.delete("/motos/:id", motoControllers.destroy);
 
+router.post("/login", validateUser, userControllers.login);
+
 // router.get("/cars", (req, res) => {
 //   client
 //     .query("SELECT * FROM car")

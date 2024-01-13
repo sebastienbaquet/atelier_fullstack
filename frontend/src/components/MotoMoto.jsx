@@ -1,7 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import Moto from "./Moto";
-import FormMotor from "./FormMotor";
 
 function MotoMoto() {
   const navigate = useNavigate();
@@ -9,13 +8,18 @@ function MotoMoto() {
   const handleReturnToApp = () => {
     navigate("/");
   };
+  const handleFormulaire = () => {
+    navigate("/motos/formulaire");
+  };
 
   return (
     <div>
-      <FormMotor />
       <Moto />
       <button type="button" onClick={handleReturnToApp}>
         Retourner
+      </button>
+      <button type="button" onClick={handleFormulaire}>
+        Formulaire
       </button>
     </div>
   );

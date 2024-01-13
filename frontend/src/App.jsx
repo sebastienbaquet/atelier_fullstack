@@ -1,25 +1,15 @@
-import { useNavigate, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./App.css";
+import NavMotos from "./components/NavMotos";
+import NavCar from "./components/NavCar";
 
 function App() {
-  const navigate = useNavigate();
-
-  const handleShowCarsClick = () => {
-    navigate("/cars");
-  };
-
-  const handleShowMotosClick = () => {
-    navigate("/motos");
-  };
-
   return (
     <div>
-      <button type="button" onClick={handleShowMotosClick}>
-        Afficher Motos
-      </button>
-      <button type="button" onClick={handleShowCarsClick}>
-        Afficher car
-      </button>
+      <div className="Nav">
+        <NavMotos />
+        <NavCar />
+      </div>
       <Link to="/Signup">
         <button type="button">s'inscrire</button>
       </Link>

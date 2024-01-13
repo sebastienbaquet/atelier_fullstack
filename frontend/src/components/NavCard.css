@@ -1,0 +1,29 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.nav_container {
+  border-radius: 1rem;
+  border: solid 4px #062f45;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.nav_img {
+  width: 100%;
+  height: 20vh;
+}
+.nav_text {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #cdfee1;
+  max-height: 600px;
+  min-height: 40px;
+  border-radius: 0rem 0rem 0.8rem 0.8rem;
+  font-size: 16px;
+}
