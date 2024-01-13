@@ -7,11 +7,13 @@ function CardDetail() {
   return (
     <div className="cartdetail">
       <Link to="/cars">
-        <img src={car.image} alt={car.brand} />
+        <img className="cartdetail_image" src={car.image} alt={car.brand} />
       </Link>
-      <p>{car.brand}</p>
-      <p>{car.engine}</p>
-      <p>{car.fonction_label}</p>
+      <div className="cartdetail_text">
+        <p>{car.brand}</p>
+        <p>{car.engine}</p>
+        <p>{car.fonction_label}</p>
+      </div>
     </div>
   );
 }

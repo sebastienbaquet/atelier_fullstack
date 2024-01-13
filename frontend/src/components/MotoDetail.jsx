@@ -4,13 +4,15 @@ import { Link, useLoaderData } from "react-router-dom";
 function MotoDetail() {
   const moto = useLoaderData();
   return (
-    <div className="motodetail">
+    <div className="cartdetail">
       <Link to="/motos">
-        <img src={moto.image} alt={moto.brand} />
+        <img className="cartdetail_image" src={moto.image} alt={moto.brand} />
       </Link>
-      <p>{moto.brand}</p>
-      <p>{moto.engine}</p>
-      <p>{moto.attribut_label}</p>
+      <div className="cartdetail_text">
+        <p>{moto.brand}</p>
+        <p>{moto.engine}</p>
+        <p>{moto.attribut_label}</p>
+      </div>
     </div>
   );
 }
