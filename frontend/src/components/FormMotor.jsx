@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import "./FormMotor.css";
 
 function MotoForm() {
   const [formData, setFormData] = useState({
@@ -115,67 +116,77 @@ function MotoForm() {
   };
 
   return (
-    <div className="all">
-      <form onSubmit={handleRequest}>
-        <label>
-          Brand:
-          <input
-            type="text"
-            name="brand"
-            value={formData.brand}
-            onChange={handleChange}
-          />
-        </label>
-        <br />
-        <label>
-          Engine:
-          <input
-            type="text"
-            name="engine"
-            value={formData.engine}
-            onChange={handleChange}
-          />
-        </label>
-        <br />
-        <label>
-          Image:
-          <input
-            type="text"
-            name="image"
-            value={formData.image}
-            onChange={handleChange}
-          />
-        </label>
-        <br />
-        <label>
-          attribut:
-          <select
-            name="attribut_id"
-            onChange={handleChange}
-            required
-            value={formData.attribut_id}
-          >
-            <option value="">choose</option>
-            {attributs.map((attribut) => (
-              <option key={attribut.id} value={attribut.id}>
-                {attribut.label}
-              </option>
-            ))}
-          </select>
-        </label>
-        <button type="submit"> {formData.id ? "modifier " : "ajouter"} </button>
-      </form>
+    <div className="form_container">
+      <div className="form_all">
+        <form onSubmit={handleRequest}>
+          <div className="form_label">
+            <label className="form_brand">
+              Brand
+              <input
+                className="input_brand"
+                type="text"
+                name="brand"
+                value={formData.brand}
+                onChange={handleChange}
+              />
+            </label>
+            <br />
+            <label className="form_engine">
+              Engine
+              <input
+                className="input_engine"
+                type="text"
+                name="engine"
+                value={formData.engine}
+                onChange={handleChange}
+              />
+            </label>
+            <br />
+            <label className="form_image">
+              Image
+              <input
+                className="input_image"
+                type="text"
+                name="image"
+                value={formData.image}
+                onChange={handleChange}
+              />
+            </label>
+            <br />
+            <label className="form_attribut">
+              attribut:
+              <select
+                name="attribut_id"
+                onChange={handleChange}
+                required
+                value={formData.attribut_id}
+              >
+                <option value="">choose</option>
+                {attributs.map((attribut) => (
+                  <option key={attribut.id} value={attribut.id}>
+                    {attribut.label}
+                  </option>
+                ))}
+              </select>
+            </label>
+            <button type="submit">
+              {formData.id ? "modifier " : "ajouter"}
+            </button>
+          </div>
+        </form>
+      </div>
+
       <section className="modif">
-        <h2> Toutes les motos</h2>
+        <h2 className="title_modif"> Toutes les motos</h2>
         <table>
           <thead>
-            <tr>
-              <th>id</th>
-              <th>brand</th>
-              <th>engine</th>
-              <th>image</th>
-              <th>attribut</th>
-              <th>Modifier</th>
+            <tr className="tr_container">
+              <th className="tr_id">id</th>
+              <th className="tr_brand">brand</th>
+              <th className="tr_engine">engine</th>
+              <th className="tr_image">image</th>
+              <th className="tr_attribut">attribut</th>
+              <th className="tr_modifier">Modifier</th>
             </tr>
           </thead>
           <tbody>
@@ -185,8 +196,12 @@ function MotoForm() {
                   <td>{Moto.id}</td>
                   <td>{Moto.brand}</td>
                   <td>{Moto.engine}</td>
-                  <td>
-                    <img src={Moto.image} alt="voiture" />
+                  <td className="tdr_image">
+                    <img
+                      className="tdr_imaget"
+                      src={Moto.image}
+                      alt="voiture"
+                    />
                   </td>
                   <td> {Moto.attribut_label}</td>
                   <td className="tdmodif">
