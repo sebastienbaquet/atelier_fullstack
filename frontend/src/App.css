@@ -1,9 +1,29 @@
 body {
   background-image: url("./assets/garage5.jpg");
+  background-repeat: no-repeat;
   background-size: cover;
+  height: 100vh;
 }
 .Nav {
   display: flex;
   justify-content: space-around;
   margin-top: 1rem;
+  gap: 1rem;
+}
+
+.container_nav {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  gap: 2rem;
+}
+
+@media screen and (max-width: 600px) {
+  .Nav {
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+  }
 }

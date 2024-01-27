@@ -6,21 +6,20 @@
 .social {
   display: flex;
   justify-content: space-around;
-  background-color: #cdfde3;
-  border-top: 3px solid #c9ecd8;
-  padding: 1rem 1rem 3rem 1rem;
+  background-color: #7c7787;
+  border-top: 3px solid #d5d2dd;
+  padding: 1rem 1rem;
   gap: 2rem;
   bottom: 0;
   width: 100%;
 }
 .socialIcon {
   font-size: 4rem;
-  background-color: white;
   padding: 1rem;
   border-radius: 50%;
-  border: solid 3px #bbe2bf;
+  border: solid 3px #d5d2dd;
   box-shadow: 0 0 0 3px white;
-  color: rgb(139, 167, 143);
+  color: #d5d2dd;
   margin-top: 1rem;
 }
 
@@ -30,9 +29,9 @@
     background-color: white;
     padding: 1rem;
     border-radius: 50%;
-    border: solid 3px #bbe2bf;
+    border: solid 3px #d5d2dd;
     box-shadow: 0 0 0 3px white;
-    color: rgb(139, 167, 143);
+    color: #d5d2dd;
     margin-top: 1rem;
   }
   .social {

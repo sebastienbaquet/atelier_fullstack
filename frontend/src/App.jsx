@@ -6,17 +6,19 @@ import Footer from "./components/Footer";
 
 function App() {
   return (
-    <div>
+    <div className="container_nav">
       <div className="Nav">
         <NavMotos />
         <NavCar />
       </div>
-      <Link to="/Signup">
-        <button type="button">s'inscrire</button>
-      </Link>
-      <Link to="/Signin">
-        <button type="button">Connecter</button>
-      </Link>
+      <div className="Nav_button">
+        <Link to="/Signup">
+          <button type="button">s'inscrire</button>
+        </Link>
+        <Link to="/Signin">
+          <button type="button">Connecter</button>
+        </Link>
+      </div>
       <Footer />
     </div>
   );
