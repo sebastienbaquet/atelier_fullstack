@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import "./App.css";
 import NavMotos from "./components/NavMotos";
 import NavCar from "./components/NavCar";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <Link to="/Signin">
         <button type="button">Connecter</button>
       </Link>
+      <Footer />
     </div>
   );
 }
