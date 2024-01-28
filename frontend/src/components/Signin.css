@@ -1,11 +1,23 @@
 .email {
-  color: white;
+  color: #d5d2dd;
 }
 .password {
-  color: white;
+  color: #d5d2dd;
 }
 .containerConnect {
-  width: 100%;
-  height: 100vh;
-  border: 3px solid red;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50vh;
+}
+.containerC1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 3px solid #d5d2dd;
+  height: 40%;
+}
+.text-h2 {
+  color: #d5d2dd;
 }

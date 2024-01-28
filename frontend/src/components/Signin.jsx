@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import "./Signin.css";
 
 function Signin() {
   const [formData, setFormData] = useState({
@@ -39,35 +40,37 @@ function Signin() {
 
   return (
     <div className="containerConnect">
-      <h2 className="text-h2">Connecte- Toi</h2>
-      <form onSubmit={handleSubmit}>
-        <label className="email">
-          Email:
-          <input
-            type="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            required
-          />
-        </label>
-        <br />
+      <div className="containerC1">
+        <h2 className="text-h2">Connecte- Toi</h2>
+        <form onSubmit={handleSubmit}>
+          <label className="email">
+            Email:
+            <input
+              type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              required
+            />
+          </label>
+          <br />
 
-        <label className="password">
-          Password:
-          <input
-            type="password"
-            name="haspassword"
-            value={formData.haspassword}
-            onChange={handleChange}
-            required
-          />
-        </label>
-        <br />
-        <button className="signin" type="submit">
-          connecter
-        </button>
-      </form>
+          <label className="password">
+            Password:
+            <input
+              type="password"
+              name="haspassword"
+              value={formData.haspassword}
+              onChange={handleChange}
+              required
+            />
+          </label>
+          <br />
+          <button className="signin" type="submit">
+            connecter
+          </button>
+        </form>
+      </div>
     </div>
   );
 }
