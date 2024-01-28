@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function Signin() {
   const [formData, setFormData] = useState({
     email: "",
     haspassword: "",
   });
-
+  const navigate = useNavigate();
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -25,6 +26,9 @@ function Signin() {
 
       if (response.status === 200) {
         console.info("utilisateur ok!");
+        setTimeout(() => {
+          navigate("/Selec");
+        }, 2000);
       } else {
         console.error("utilisateur no");
       }
@@ -34,8 +38,8 @@ function Signin() {
   };
 
   return (
-    <div>
-      <h2>Signin</h2>
+    <div className="containerConnect">
+      <h2 className="text-h2">Connecte- Toi</h2>
       <form onSubmit={handleSubmit}>
         <label className="email">
           Email:
@@ -60,7 +64,9 @@ function Signin() {
           />
         </label>
         <br />
-        <button type="submit">Signin</button>
+        <button className="signin" type="submit">
+          connecter
+        </button>
       </form>
     </div>
   );

@@ -6,6 +6,7 @@ body {
 }
 .Nav {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-around;
   margin-top: 1rem;
   gap: 1rem;
@@ -19,6 +20,19 @@ body {
   height: 100vh;
   gap: 2rem;
 }
+.motoph {
+  height: 10rem;
+  border-radius: 20rem;
+}
+.buton1 {
+  padding: 2rem;
+}
+.buton1g,
+.buton2g {
+  padding: 1rem;
+  border-radius: 20px;
+  background-color: #d5d2dd;
+}
 
 @media screen and (max-width: 600px) {
   .Nav {
@@ -26,4 +40,7 @@ body {
     justify-content: space-around;
     align-items: center;
   }
+}
+.containerLay {
+  width: 100%;
 }

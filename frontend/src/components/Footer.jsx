@@ -5,8 +5,9 @@ import {
   TiSocialTwitter,
   TiSocialInstagram,
 } from "react-icons/ti";
-
+import { FaMotorcycle } from "react-icons/fa";
 import "./Footer.css";
+import { Link } from "react-router-dom";
 
 function Footer() {
   return (
@@ -28,9 +29,9 @@ function Footer() {
         >
           <TiSocialLinkedin className="socialIcon" />
         </a>
-        {/* <a aria-label="logoGreen" href="/" rel="noreferrer">
-          <img src={LogoGreen} alt="logo du site" className=" logoGreen" />
-        </a> */}
+        <Link to="/">
+          <FaMotorcycle className="socialIcon" />
+        </Link>
         <a
           aria-label="instagram"
           href="https://www.instagram.com/"

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./Signup.css";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function Signup() {
   const [formData, setFormData] = useState({
@@ -8,6 +9,8 @@ function Signup() {
     haspassword: "",
     confirmPassword: "",
   });
+
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -31,21 +34,22 @@ function Signup() {
       );
 
       if (response.status === 201) {
-        console.info("utilisateur ok!");
-      } else {
-        console.error("utilisateur no");
+        console.info("Utilisateur enregistré avec succès !");
+        setTimeout(() => {
+          navigate("/Signin");
+        }, 2000);
       }
     } catch (error) {
-      console.error("Error:", error.message);
+      console.error("Erreur :", error.message);
     }
   };
 
   return (
     <div>
-      <h2>Signup</h2>
+      <h2>Inscription</h2>
       <form onSubmit={handleSubmit}>
         <label className="email">
-          Email:
+          Email :
           <input
             type="email"
             name="email"
@@ -57,7 +61,7 @@ function Signup() {
         <br />
 
         <label className="password">
-          Password:
+          Mot de passe :
           <input
             type="password"
             name="haspassword"
@@ -69,7 +73,7 @@ function Signup() {
         <br />
 
         <label className="confirme">
-          Confirm Password:
+          Confirmer le mot de passe :
           <input
             type="password"
             name="confirmPassword"
@@ -80,7 +84,7 @@ function Signup() {
         </label>
         <br />
 
-        <button type="submit">Signup</button>
+        <button type="submit">Inscription</button>
       </form>
     </div>
   );

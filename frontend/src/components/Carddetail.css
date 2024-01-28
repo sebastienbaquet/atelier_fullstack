@@ -16,3 +16,6 @@
   align-items: center;
   font-size: 20px;
 }
+a {
+  text-decoration: none;
+}
