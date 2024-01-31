@@ -6,7 +6,7 @@ import connexion from "../services/connexion";
 function Signup() {
   const [formData, setFormData] = useState({
     email: "",
-    haspassword: "",
+    password: "",
     confirmPassword: "",
   });
 
@@ -22,7 +22,7 @@ function Signup() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (formData.haspassword !== formData.confirmPassword) {
+    if (formData.password !== formData.confirmPassword) {
       console.error("Les mots de passe ne correspondent pas.");
       return;
     }
@@ -64,8 +64,8 @@ function Signup() {
             <input
               className="input"
               type="password"
-              name="haspassword"
-              value={formData.haspassword}
+              name="password"
+              value={formData.password}
               onChange={handleChange}
               required
             />

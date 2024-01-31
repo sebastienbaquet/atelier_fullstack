@@ -6,7 +6,7 @@ import "./Signin.css";
 function Signin() {
   const [formData, setFormData] = useState({
     email: "",
-    haspassword: "",
+    hashpassword: "",
   });
   const navigate = useNavigate();
   const handleChange = (e) => {
@@ -58,8 +58,8 @@ function Signin() {
             <input
               className="input"
               type="password"
-              name="haspassword"
-              value={formData.haspassword}
+              name="hashpassword"
+              value={formData.hashpassword}
               onChange={handleChange}
               required
             />

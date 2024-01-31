@@ -62,13 +62,10 @@ const add = async (req, res, next) => {
 
   try {
     // Hash the user's password using Argon2
-    const hashedPassword = await argon2.hash(user.haspassword);
-
-    // Replace the plain password with the hashed password
-    user.haspassword = hashedPassword;
+    const hashedPassword = await argon2.hash(user.password);
 
     // Insert the user into the database
-    const insertId = await tables.user.create(user);
+    const insertId = await tables.user.create(user.email, hashedPassword);
 
     // Respond with HTTP 201 (Created) and the ID of the newly inserted item
     res.status(201).json({ insertId });

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import connexion from "../services/connexion";
 import "./FormMotor.css";
 
 function CarForm() {
@@ -14,8 +14,8 @@ function CarForm() {
 
   const getFonctions = async () => {
     try {
-      const myFonctions = await axios
-        .get(`${import.meta.env.VITE_BACKEND_URL}/api/fonctions`)
+      const myFonctions = await connexion
+        .get("/fonctions")
         .then((res) => res.data);
       setFonctions(myFonctions);
     } catch (error) {
@@ -25,19 +25,12 @@ function CarForm() {
 
   const getCars = async () => {
     try {
-      const myCars = await axios
-        .get(`${import.meta.env.VITE_BACKEND_URL}/api/cars`)
-        .then((res) => res.data);
+      const myCars = await connexion.get("/cars").then((res) => res.data);
       setCars(myCars);
     } catch (error) {
       console.error("Erreur lecture car", error);
     }
   };
-
-  // useEffect(() => {
-  //   // console.info(formData);
-  // }, [formData]);
-
   useEffect(() => {
     getFonctions();
     getCars();
@@ -61,11 +54,14 @@ function CarForm() {
     e.preventDefault();
 
     try {
-      const response = await axios.post(
-        `${import.meta.env.VITE_BACKEND_URL}/api/cars`,
-        formData
-      );
+      const response = await connexion.post("/cars", formData);
       getCars();
+      setFormData({
+        brand: "",
+        engine: "",
+        image: "",
+        attribut_id: "",
+      });
       console.info("Nouvelle voiture ajouté:", response.data);
     } catch (error) {
       console.error("Erreur lors de l'ajout d'une voiture':", error);
@@ -74,9 +70,7 @@ function CarForm() {
 
   const deleteCar = async (id) => {
     try {
-      const response = await axios.delete(
-        `${import.meta.env.VITE_BACKEND_URL}/api/cars/${id}`
-      );
+      const response = await connexion.delete(`/cars/${id}`);
       getCars();
       console.info("Nouvelle voiture effacer:", response.data);
     } catch (error) {
@@ -87,10 +81,7 @@ function CarForm() {
   const putCar = async (event) => {
     event.preventDefault();
     try {
-      await axios.put(
-        `${import.meta.env.VITE_BACKEND_URL}/api/cars/${formData.id}`,
-        formData
-      );
+      await connexion.put(`/cars/${formData.id}`, formData);
       getCars();
       setFormData({
         brand: "",
