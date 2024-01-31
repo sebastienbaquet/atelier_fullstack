@@ -33,6 +33,10 @@ body {
   border-radius: 20px;
   background-color: #d5d2dd;
 }
+.Nav_button {
+  display: flex;
+  align-items: center;
+}
 
 @media screen and (max-width: 600px) {
   .Nav {

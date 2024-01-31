@@ -123,7 +123,7 @@ function MotoForm() {
             <label className="form_brand">
               Brand
               <input
-                className="input_brand"
+                className="input"
                 type="text"
                 name="brand"
                 value={formData.brand}
@@ -134,7 +134,7 @@ function MotoForm() {
             <label className="form_engine">
               Engine
               <input
-                className="input_engine"
+                className="input"
                 type="text"
                 name="engine"
                 value={formData.engine}
@@ -145,7 +145,7 @@ function MotoForm() {
             <label className="form_image">
               Image
               <input
-                className="input_image"
+                className="input"
                 type="text"
                 name="image"
                 value={formData.image}
@@ -175,7 +175,6 @@ function MotoForm() {
           </div>
         </form>
       </div>
-
       <section className="modif">
         <h2 className="title_modif"> Toutes les motos</h2>
         <table className="tablef">

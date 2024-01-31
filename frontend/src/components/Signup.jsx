@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./Signup.css";
+import "./Signin.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
@@ -45,47 +45,54 @@ function Signup() {
   };
 
   return (
-    <div>
-      <h2>Inscription</h2>
-      <form onSubmit={handleSubmit}>
-        <label className="email">
-          Email :
-          <input
-            type="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            required
-          />
-        </label>
-        <br />
+    <div className="containerConnect">
+      <div className="containerC1">
+        <h2 className="text-h2">Inscription</h2>
+        <form onSubmit={handleSubmit}>
+          <label className="email">
+            Email :
+            <input
+              className="input"
+              type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              required
+            />
+          </label>
+          <br />
 
-        <label className="password">
-          Mot de passe :
-          <input
-            type="password"
-            name="haspassword"
-            value={formData.haspassword}
-            onChange={handleChange}
-            required
-          />
-        </label>
-        <br />
+          <label className="password">
+            Mot de passe :
+            <input
+              className="input"
+              type="password"
+              name="haspassword"
+              value={formData.haspassword}
+              onChange={handleChange}
+              required
+            />
+          </label>
+          <br />
 
-        <label className="confirme">
-          Confirmer le mot de passe :
-          <input
-            type="password"
-            name="confirmPassword"
-            value={formData.confirmPassword}
-            onChange={handleChange}
-            required
-          />
-        </label>
-        <br />
+          <label className="password">
+            Confirmer le mot de passe :
+            <input
+              className="input"
+              type="password"
+              name="confirmPassword"
+              value={formData.confirmPassword}
+              onChange={handleChange}
+              required
+            />
+          </label>
+          <br />
 
-        <button type="submit">Inscription</button>
-      </form>
+          <button className="signin" type="submit">
+            Inscription
+          </button>
+        </form>
+      </div>
     </div>
   );
 }

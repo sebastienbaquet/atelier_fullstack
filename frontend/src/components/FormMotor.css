@@ -33,7 +33,7 @@
   margin-bottom: 10px;
   color: rgb(129, 124, 124);
 }
-.input_brand {
+.input {
   width: 100%;
   padding: 8px;
   border: 2px solid black;
@@ -47,13 +47,7 @@
   margin-bottom: 10px;
   color: rgb(129, 124, 124);
 }
-.input_engine {
-  width: 100%;
-  padding: 8px;
-  border: 2px solid black;
-  border-radius: 8px;
-  margin-bottom: 16px;
-}
+
 .form_image {
   display: flex;
   flex-direction: column;
@@ -61,13 +55,7 @@
   margin-bottom: 10px;
   color: rgb(129, 124, 124);
 }
-.input_image {
-  width: 100%;
-  padding: 8px;
-  border: 2px solid black;
-  border-radius: 8px;
-  margin-bottom: 16px;
-}
+
 .modif {
   border: solid 4px rgb(129, 124, 124);
   margin-top: 2rem;
@@ -131,7 +119,7 @@
   justify-content: center;
 }
 .tr_brand {
-  width: 20px;
+  width: 50px;
   display: flex;
   justify-content: center;
 }
@@ -141,7 +129,7 @@
   justify-content: center;
 }
 .tr_attribut {
-  width: 40px;
+  width: 60px;
   display: flex;
   justify-content: center;
 }

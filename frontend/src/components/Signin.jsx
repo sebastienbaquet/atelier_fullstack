@@ -46,6 +46,7 @@ function Signin() {
           <label className="email">
             Email:
             <input
+              className="input"
               type="email"
               name="email"
               value={formData.email}
@@ -58,6 +59,7 @@ function Signin() {
           <label className="password">
             Password:
             <input
+              className="input"
               type="password"
               name="haspassword"
               value={formData.haspassword}

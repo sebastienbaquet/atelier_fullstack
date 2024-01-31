@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import "./FormMotor.css";
 
 function CarForm() {
   const [formData, setFormData] = useState({
@@ -115,81 +116,90 @@ function CarForm() {
   };
 
   return (
-    <div className="all">
-      <form onSubmit={handleRequest}>
-        <label>
-          Brand:
-          <input
-            type="text"
-            name="brand"
-            value={formData.brand}
-            onChange={handleChange}
-          />
-        </label>
-        <br />
-        <label>
-          Engine:
-          <input
-            type="text"
-            name="engine"
-            value={formData.engine}
-            onChange={handleChange}
-          />
-        </label>
-        <br />
-        <label>
-          Image:
-          <input
-            type="text"
-            name="image"
-            value={formData.image}
-            onChange={handleChange}
-          />
-        </label>
-        <br />
-        <label>
-          Fonction:
-          <select
-            name="fonction_id"
-            onChange={handleChange}
-            required
-            value={formData.fonction_id}
-          >
-            <option value="">choose</option>
-            {fonctions.map((fonction) => (
-              <option key={fonction.id} value={fonction.id}>
-                {fonction.label}
-              </option>
-            ))}
-          </select>
-        </label>
-        <button type="submit"> {formData.id ? "modifier " : "ajouter"} </button>
-      </form>
+    <div className="form_container">
+      <div className="form_all">
+        <form onSubmit={handleRequest}>
+          <div className="form_label">
+            <label className="form_brand">
+              Brand:
+              <input
+                className="input"
+                type="text"
+                name="brand"
+                value={formData.brand}
+                onChange={handleChange}
+              />
+            </label>
+            <br />
+            <label className="form_engine">
+              Engine:
+              <input
+                className="input"
+                type="text"
+                name="engine"
+                value={formData.engine}
+                onChange={handleChange}
+              />
+            </label>
+            <br />
+            <label className="form_image">
+              Image:
+              <input
+                className="input"
+                type="text"
+                name="image"
+                value={formData.image}
+                onChange={handleChange}
+              />
+            </label>
+            <br />
+            <label className="form_attribut">
+              Fonction:
+              <select
+                name="fonction_id"
+                onChange={handleChange}
+                required
+                value={formData.fonction_id}
+              >
+                <option value="">choose</option>
+                {fonctions.map((fonction) => (
+                  <option key={fonction.id} value={fonction.id}>
+                    {fonction.label}
+                  </option>
+                ))}
+              </select>
+            </label>
+            <button type="submit">
+              {formData.id ? "modifier " : "ajouter"}
+            </button>
+          </div>
+        </form>
+      </div>
       <section className="modif">
-        <h2> Toutes les voitures</h2>
-        <table>
+        <h2 className="title_modif"> Toutes les voitures</h2>
+        <table className="tablef">
           <thead>
-            <tr>
-              <th>id</th>
-              <th>brand</th>
-              <th>engine</th>
-              <th>image</th>
-              <th>Fonction</th>
-              <th>Modifier</th>
+            <tr className="tr_container">
+              <th className="tr_image">image</th>
+              <th className="tr_id">id</th>
+              <th className="tr_brand">brand</th>
+              <th className="tr_engine">engine</th>
+              <th className="tr_attribut">Fonction</th>
+              <th className="tr_modifier">Modifier</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody className="tbody_container">
             {Cars.map((car) => {
               return (
-                <tr key={car.id} value={car.id}>
-                  <td>{car.id}</td>
-                  <td>{car.brand}</td>
-                  <td>{car.engine}</td>
-                  <td>
-                    <img src={car.image} alt="voiture" />
+                <tr className="containerEntre" key={car.id} value={car.id}>
+                  <td className="tdr_image">
+                    <img className="tdr_imaget" src={car.image} alt="voiture" />
                   </td>
-                  <td> {car.fonction_label}</td>
-                  <td className="tdmodif">
+                  <td className="tr_id">{car.id}</td>
+                  <td className="tr_brand">{car.brand}</td>
+                  <td className="tr_engine">{car.engine}</td>
+                  <td className="tr_attribut"> {car.fonction_label}</td>
+                  <td className="tdmodif tr_modifier">
                     <button
                       className="delete"
                       type="button"
