@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./Signin.css";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import connexion from "../services/connexion";
 
 function Signup() {
   const [formData, setFormData] = useState({
@@ -28,10 +28,7 @@ function Signup() {
     }
 
     try {
-      const response = await axios.post(
-        `${import.meta.env.VITE_BACKEND_URL}/api/users`,
-        formData
-      );
+      const response = await connexion.post(`/api/users`, formData);
 
       if (response.status === 201) {
         console.info("Utilisateur enregistré avec succès !");

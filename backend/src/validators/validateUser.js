@@ -2,12 +2,11 @@ const Joi = require("joi");
 
 const schema = Joi.object({
   email: Joi.string().required().email(),
-  haspassword: Joi.string().required(),
+  hashpassword: Joi.string().min(5).max(16).required(),
   confirmPassword: Joi.any().strip(),
 });
 
-const authSignup = (req, res, next) => {
-  delete req.body.id;
+const validateUser = (req, res, next) => {
   const { error } = schema.validate(req.body);
 
   if (error) {
@@ -17,4 +16,4 @@ const authSignup = (req, res, next) => {
   }
 };
 
-module.exports = authSignup;
+module.exports = validateUser;
