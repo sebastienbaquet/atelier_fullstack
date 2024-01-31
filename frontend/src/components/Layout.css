@@ -1,0 +1,8 @@
+.bdeconnection {
+  margin: 10px 10px;
+  padding: 5px;
+  height: 5vh;
+  color: white;
+  background-color: rgb(129, 124, 124);
+  border-radius: 10px;
+}

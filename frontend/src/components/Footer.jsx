@@ -29,7 +29,7 @@ function Footer() {
         >
           <TiSocialLinkedin className="socialIcon" />
         </a>
-        <Link to="/">
+        <Link to="/Selec">
           <FaMotorcycle className="socialIcon" />
         </Link>
         <a

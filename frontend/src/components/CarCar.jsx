@@ -5,9 +5,6 @@ import CardS from "./CardS";
 function CarCar() {
   const navigate = useNavigate();
 
-  const handleReturnToApp = () => {
-    navigate("/");
-  };
   const handleFormulaire = () => {
     navigate("/cars/formulaire");
   };
@@ -15,9 +12,6 @@ function CarCar() {
   return (
     <div>
       <CardS />
-      <button type="button" onClick={handleReturnToApp}>
-        Retourner
-      </button>
       <button type="button" onClick={handleFormulaire}>
         Formulaire
       </button>
