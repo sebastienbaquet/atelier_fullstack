@@ -178,24 +178,21 @@ function MotoForm() {
 
       <section className="modif">
         <h2 className="title_modif"> Toutes les motos</h2>
-        <table>
+        <table className="tablef">
           <thead>
             <tr className="tr_container">
+              <th className="tr_image">image</th>
               <th className="tr_id">id</th>
               <th className="tr_brand">brand</th>
               <th className="tr_engine">engine</th>
-              <th className="tr_image">image</th>
               <th className="tr_attribut">attribut</th>
               <th className="tr_modifier">Modifier</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody className="tbody_container">
             {Motos.map((Moto) => {
               return (
-                <tr key={Moto.id} value={Moto.id}>
-                  <td>{Moto.id}</td>
-                  <td>{Moto.brand}</td>
-                  <td>{Moto.engine}</td>
+                <tr className="containerEntre" key={Moto.id} value={Moto.id}>
                   <td className="tdr_image">
                     <img
                       className="tdr_imaget"
@@ -203,8 +200,11 @@ function MotoForm() {
                       alt="voiture"
                     />
                   </td>
-                  <td> {Moto.attribut_label}</td>
-                  <td className="tdmodif">
+                  <td className="tr_id">{Moto.id}</td>
+                  <td className="tr_brand">{Moto.brand}</td>
+                  <td className="tr_engine">{Moto.engine}</td>
+                  <td className="tr_attribut"> {Moto.attribut_label}</td>
+                  <td className="tdmodif tr_modifier">
                     <button
                       className="delete"
                       type="button"
