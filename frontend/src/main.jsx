@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import axios from "axios";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import connexion from "./services/connexion";
 import PageOneCar from "./pages/PageOneCar";
 import App from "./App";
 import PageOneMoto from "./pages/PageOneMoto";
@@ -55,8 +55,8 @@ const router = createBrowserRouter([
             path: "/cars",
             element: <CarCar />,
             loader: () => {
-              return axios
-                .get(`${import.meta.env.VITE_BACKEND_URL}/api/cars`)
+              return connexion
+                .get("/cars")
                 .then((res) => res.data)
                 .catch((err) => console.error(err));
             },
@@ -65,10 +65,8 @@ const router = createBrowserRouter([
             path: "/cars/:id",
             element: <PageOneCar />,
             loader: ({ params }) => {
-              return axios
-                .get(
-                  `${import.meta.env.VITE_BACKEND_URL}/api/cars/${params.id}`
-                )
+              return connexion
+                .get(`cars/${params.id}`)
                 .then((res) => res.data)
                 .catch((err) => console.error(err));
             },
@@ -77,8 +75,8 @@ const router = createBrowserRouter([
             path: "/motos",
             element: <MotoMoto />,
             loader: () => {
-              return axios
-                .get(`${import.meta.env.VITE_BACKEND_URL}/api/motos`)
+              return connexion
+                .get("/motos")
                 .then((res) => res.data)
                 .catch((err) => console.error(err));
             },
@@ -87,10 +85,8 @@ const router = createBrowserRouter([
             path: "/motos/:id",
             element: <PageOneMoto />,
             loader: ({ params }) => {
-              return axios
-                .get(
-                  `${import.meta.env.VITE_BACKEND_URL}/api/motos/${params.id}`
-                )
+              return connexion
+                .get(`motos/${params.id}`)
                 .then((res) => res.data)
                 .catch((err) => console.error(err));
             },

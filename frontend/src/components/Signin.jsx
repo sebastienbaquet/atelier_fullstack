@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import connexion from "../services/connexion";
 import "./Signin.css";
 
 function Signin() {
   const [formData, setFormData] = useState({
     email: "",
-    haspassword: "",
+    hashpassword: "",
   });
   const navigate = useNavigate();
   const handleChange = (e) => {
@@ -20,10 +20,7 @@ function Signin() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(
-        `${import.meta.env.VITE_BACKEND_URL}/api/login`,
-        formData
-      );
+      const response = await connexion.post(`/login`, formData);
 
       if (response.status === 200) {
         console.info("utilisateur ok!");
@@ -61,8 +58,8 @@ function Signin() {
             <input
               className="input"
               type="password"
-              name="haspassword"
-              value={formData.haspassword}
+              name="hashpassword"
+              value={formData.hashpassword}
               onChange={handleChange}
               required
             />

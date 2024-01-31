@@ -1,8 +1,9 @@
+-- SQLBook: Code
 
 create table user(
   id INT PRIMARY KEY AUTO_INCREMENT,
    email  VARCHAR(255) NOT NULL UNIQUE,
-   haspassword VARCHAR(255) NOT NULL
+   hashpassword VARCHAR(255) NOT NULL
 );
 
 
@@ -40,7 +41,7 @@ create table moto(
         REFERENCES attribut(id)    
 );
 
-INSERT INTO user(email,haspassword) VALUES ('bas.envoi@yahoo','tututoto');
+INSERT INTO user(email,hashpassword) VALUES ('bas.envoi@yahoo','tututoto');
 
 
 INSERT INTO fonction(label) VALUES ('sport'),('suv'),('city_car'),('road');

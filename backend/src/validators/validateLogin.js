@@ -2,11 +2,10 @@ const Joi = require("joi");
 
 const schema = Joi.object({
   email: Joi.string().required().email(),
-  password: Joi.string().min(5).max(16).required(),
-  confirmPassword: Joi.any().strip(),
+  hashpassword: Joi.string().min(5).max(16).required(),
 });
 
-const valideUser = (req, res, next) => {
+const valideLogin = (req, res, next) => {
   const { error } = schema.validate(req.body);
 
   if (error) {
@@ -16,4 +15,4 @@ const valideUser = (req, res, next) => {
   }
 };
 
-module.exports = valideUser;
+module.exports = valideLogin;
