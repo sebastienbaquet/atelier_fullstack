@@ -1,24 +1,23 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
-import Form from "../components/form";
+import { Outlet, useNavigate } from "react-router-dom";
 
-function PageOneFormCar() {
+function LayoutDeconnect() {
   const navigate = useNavigate();
   const handleReturnToApp = () => {
-    navigate("/cars");
+    navigate("/");
   };
   return (
     <div>
-      <Form />
       <button
-        className="button_PageFom"
+        className="bdeconnection"
         type="button"
         onClick={handleReturnToApp}
       >
-        Retourner
+        Déconnection
       </button>
+      <Outlet />
     </div>
   );
 }
 
-export default PageOneFormCar;
+export default LayoutDeconnect;

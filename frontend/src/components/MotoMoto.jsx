@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import Moto from "./Moto";
+import "./Carddetail.css";
 
 function MotoMoto() {
   const navigate = useNavigate();
@@ -12,9 +13,8 @@ function MotoMoto() {
   return (
     <div>
       <Moto />
-
-      <button type="button" onClick={handleFormulaire}>
-        Formulaire
+      <button className="button_form" type="button" onClick={handleFormulaire}>
+        Modification de ta liste
       </button>
     </div>
   );

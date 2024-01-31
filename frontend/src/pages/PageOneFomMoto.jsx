@@ -10,7 +10,11 @@ function PageOneFomMoto() {
   return (
     <div>
       <FormMotor />
-      <button type="button" onClick={handleReturnToApp}>
+      <button
+        className="button_PageFom"
+        type="button"
+        onClick={handleReturnToApp}
+      >
         Retourner
       </button>
     </div>

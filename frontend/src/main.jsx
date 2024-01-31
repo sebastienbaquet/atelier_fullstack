@@ -14,6 +14,7 @@ import PageOneFormCar from "./pages/PageOneFormCar";
 import PageSelec from "./pages/PageSelec";
 import Layout from "./components/Layout";
 import PageHome from "./pages/PageHome";
+import LayoutDeconnect from "./components/LayoutDeconnect";
 
 const router = createBrowserRouter([
   {
@@ -36,57 +37,65 @@ const router = createBrowserRouter([
         element: <Signup />,
       },
       {
-        path: "/selec",
-        element: <PageSelec />,
-      },
-      {
-        path: "/motos/formulaire",
-        element: <PageOneFomMoto />,
-      },
-      {
-        path: "/cars/formulaire",
-        element: <PageOneFormCar />,
-      },
-      {
-        path: "/cars",
-        element: <CarCar />,
-        loader: () => {
-          return axios
-            .get(`${import.meta.env.VITE_BACKEND_URL}/api/cars`)
-            .then((res) => res.data)
-            .catch((err) => console.error(err));
-        },
-      },
-      {
-        path: "/cars/:id",
-        element: <PageOneCar />,
-        loader: ({ params }) => {
-          return axios
-            .get(`${import.meta.env.VITE_BACKEND_URL}/api/cars/${params.id}`)
-            .then((res) => res.data)
-            .catch((err) => console.error(err));
-        },
-      },
-
-      {
-        path: "/motos",
-        element: <MotoMoto />,
-        loader: () => {
-          return axios
-            .get(`${import.meta.env.VITE_BACKEND_URL}/api/motos`)
-            .then((res) => res.data)
-            .catch((err) => console.error(err));
-        },
-      },
-      {
-        path: "/motos/:id",
-        element: <PageOneMoto />,
-        loader: ({ params }) => {
-          return axios
-            .get(`${import.meta.env.VITE_BACKEND_URL}/api/motos/${params.id}`)
-            .then((res) => res.data)
-            .catch((err) => console.error(err));
-        },
+        element: <LayoutDeconnect />,
+        children: [
+          {
+            path: "/selec",
+            element: <PageSelec />,
+          },
+          {
+            path: "/motos/formulaire",
+            element: <PageOneFomMoto />,
+          },
+          {
+            path: "/cars/formulaire",
+            element: <PageOneFormCar />,
+          },
+          {
+            path: "/cars",
+            element: <CarCar />,
+            loader: () => {
+              return axios
+                .get(`${import.meta.env.VITE_BACKEND_URL}/api/cars`)
+                .then((res) => res.data)
+                .catch((err) => console.error(err));
+            },
+          },
+          {
+            path: "/cars/:id",
+            element: <PageOneCar />,
+            loader: ({ params }) => {
+              return axios
+                .get(
+                  `${import.meta.env.VITE_BACKEND_URL}/api/cars/${params.id}`
+                )
+                .then((res) => res.data)
+                .catch((err) => console.error(err));
+            },
+          },
+          {
+            path: "/motos",
+            element: <MotoMoto />,
+            loader: () => {
+              return axios
+                .get(`${import.meta.env.VITE_BACKEND_URL}/api/motos`)
+                .then((res) => res.data)
+                .catch((err) => console.error(err));
+            },
+          },
+          {
+            path: "/motos/:id",
+            element: <PageOneMoto />,
+            loader: ({ params }) => {
+              return axios
+                .get(
+                  `${import.meta.env.VITE_BACKEND_URL}/api/motos/${params.id}`
+                )
+                .then((res) => res.data)
+                .catch((err) => console.error(err));
+            },
+          },
+        ],
       },
     ],
   },

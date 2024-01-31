@@ -6,16 +6,22 @@
 .form_container {
   display: flex;
   align-items: center;
+  justify-content: center;
   justify-content: space-around;
+  height: 70vh;
+  margin-right: 10rem;
 }
 .form_all {
-  width: 15%;
-  height: 40vh;
+  width: 20%;
+  margin: auto;
+  padding: 20px;
   border: solid 4px rgb(129, 124, 124);
   color: white;
   display: flex;
+  flex-direction: column;
   align-items: center;
   background-color: rgb(29, 33, 33);
+  border-radius: 20px;
 }
 .form_label {
   padding: 2rem;
@@ -25,32 +31,49 @@
   flex-direction: column;
   align-items: center;
   margin-bottom: 10px;
+  color: rgb(129, 124, 124);
 }
 .input_brand {
-  padding: 0.5rem;
+  width: 100%;
+  padding: 8px;
+  border: 2px solid black;
+  border-radius: 8px;
+  margin-bottom: 16px;
 }
 .form_engine {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-bottom: 10px;
+  color: rgb(129, 124, 124);
 }
 .input_engine {
-  padding: 0.5rem;
+  width: 100%;
+  padding: 8px;
+  border: 2px solid black;
+  border-radius: 8px;
+  margin-bottom: 16px;
 }
 .form_image {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-bottom: 10px;
+  color: rgb(129, 124, 124);
 }
 .input_image {
-  padding: 0.5rem;
+  width: 100%;
+  padding: 8px;
+  border: 2px solid black;
+  border-radius: 8px;
+  margin-bottom: 16px;
 }
 .modif {
   border: solid 4px rgb(129, 124, 124);
   margin-top: 2rem;
   background-color: rgb(29, 33, 33);
+  border-radius: 20px;
+  padding: 10px;
 }
 .tdr_image {
   border: solid 4px rgb(129, 124, 124);
