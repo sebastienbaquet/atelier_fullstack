@@ -22,7 +22,10 @@ function Signin() {
     setShowPassword(!showPassword);
   };
   const showToast = (message) => {
-    toast(message);
+    toast.success(message);
+  };
+  const showToastError = (message) => {
+    toast.error(message);
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -40,7 +43,7 @@ function Signin() {
       }
     } catch (error) {
       console.error("Error:", error.message);
-      showToast("Erreur");
+      showToastError("Erreur");
     }
   };
 
