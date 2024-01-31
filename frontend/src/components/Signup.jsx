@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "./Signin.css";
 import { useNavigate } from "react-router-dom";
 import connexion from "../services/connexion";
@@ -9,7 +11,7 @@ function Signup() {
     password: "",
     confirmPassword: "",
   });
-
+  const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -20,24 +22,42 @@ function Signup() {
     });
   };
 
+  const handleTogglePassword = () => {
+    setShowPassword(!showPassword);
+  };
+
+  const showToast = (message, type = "error") => {
+    toast[type](message);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     if (formData.password !== formData.confirmPassword) {
-      console.error("Les mots de passe ne correspondent pas.");
+      showToast("Les mots de passe ne correspondent pas !");
+      return;
+    }
+
+    if (formData.password.length < 8) {
+      showToast("Le mot de passe doit faire 8 caractères minimum !");
       return;
     }
 
     try {
       const response = await connexion.post(`/users`, formData);
-
       if (response.status === 201) {
+        showToast(
+          "Inscription réussie ! Passons à l'étape suivante !",
+          "success"
+        );
         console.info("Utilisateur enregistré avec succès !");
         setTimeout(() => {
           navigate("/Signin");
         }, 2000);
       }
     } catch (error) {
-      console.error("Erreur :", error.message);
+      console.error("Erreur lors de l'inscription :", error.message);
+      showToast("Mail déjà éxistant");
     }
   };
 
@@ -63,20 +83,18 @@ function Signup() {
             Mot de passe :
             <input
               className="input"
-              type="password"
+              type={showPassword ? "text" : "password"}
               name="password"
               value={formData.password}
               onChange={handleChange}
               required
             />
           </label>
-          <br />
-
           <label className="password">
             Confirmer le mot de passe :
             <input
               className="input"
-              type="password"
+              type={showPassword ? "text" : "password"}
               name="confirmPassword"
               value={formData.confirmPassword}
               onChange={handleChange}
@@ -84,12 +102,21 @@ function Signup() {
             />
           </label>
           <br />
-
+          <button
+            className="signin"
+            type="button"
+            onClick={handleTogglePassword}
+          >
+            {showPassword ? "Cacher password" : "Afficher password"}
+          </button>
+          <br />
           <button className="signin" type="submit">
             Inscription
           </button>
         </form>
       </div>
+
+      <ToastContainer />
     </div>
   );
 }
