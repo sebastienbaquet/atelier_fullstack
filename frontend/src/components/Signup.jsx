@@ -28,7 +28,7 @@ function Signup() {
     }
 
     try {
-      const response = await connexion.post(`/api/users`, formData);
+      const response = await connexion.post(`/users`, formData);
 
       if (response.status === 201) {
         console.info("Utilisateur enregistré avec succès !");

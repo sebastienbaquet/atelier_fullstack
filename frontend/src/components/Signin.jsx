@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import connexion from "../services/connexion";
 import "./Signin.css";
 
 function Signin() {
@@ -20,10 +20,7 @@ function Signin() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(
-        `${import.meta.env.VITE_BACKEND_URL}/api/login`,
-        formData
-      );
+      const response = await connexion.post(`/login`, formData);
 
       if (response.status === 200) {
         console.info("utilisateur ok!");

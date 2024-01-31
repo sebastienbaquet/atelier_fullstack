@@ -13,6 +13,7 @@ const carControllers = require("./controllers/CaraControllers");
 const motoControllers = require("./controllers/MotoControllers");
 const userControllers = require("./controllers/UserControllers");
 const validateUser = require("./validators/validateUser");
+const validateLogin = require("./validators/validateLogin");
 
 // Route to get a list of items
 router.get("/cars", carControllers.browse);
@@ -44,7 +45,7 @@ router.put("/motos/:id", motoControllers.edit);
 router.delete("/cars/:id", carControllers.destroy);
 router.delete("/motos/:id", motoControllers.destroy);
 
-router.post("/login", validateUser, userControllers.login);
+router.post("/login", validateLogin, userControllers.login);
 
 // router.get("/cars", (req, res) => {
 //   client
