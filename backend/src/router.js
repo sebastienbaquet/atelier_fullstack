@@ -14,6 +14,8 @@ const motoControllers = require("./controllers/MotoControllers");
 const userControllers = require("./controllers/UserControllers");
 const validateUser = require("./validators/validateUser");
 const validateLogin = require("./validators/validateLogin");
+const validateCar = require("./validators/validateCar");
+const validateMoto = require("./validators/validateMoto");
 
 // Route to get a list of items
 router.get("/cars", carControllers.browse);
@@ -33,14 +35,14 @@ router.get("/cars/:id", carControllers.read);
 router.get("/motos/:id", motoControllers.read);
 
 // Route to add a new item
-router.post("/cars", carControllers.add);
-router.post("/motos", motoControllers.add);
+router.post("/cars", validateCar, carControllers.add);
+router.post("/motos", validateMoto, motoControllers.add);
 router.post("/users", validateUser, userControllers.add);
 
 // Route to update a specific item by ID
 
-router.put("/cars/:id", carControllers.edit);
-router.put("/motos/:id", motoControllers.edit);
+router.put("/cars/:id", validateCar, carControllers.edit);
+router.put("/motos/:id", validateMoto, motoControllers.edit);
 
 router.delete("/cars/:id", carControllers.destroy);
 router.delete("/motos/:id", motoControllers.destroy);
