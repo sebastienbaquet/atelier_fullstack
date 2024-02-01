@@ -1,23 +1,25 @@
 import React from "react";
-import { Outlet, useNavigate } from "react-router-dom";
+import { Outlet } from "react-router-dom";
+import connexion from "../services/connexion";
 
 function LayoutDeconnect() {
-  const navigate = useNavigate();
-  const handleReturnToApp = () => {
-    navigate("/");
+  const handleLogout = async () => {
+    try {
+      await connexion.post("logout");
+    } catch (error) {
+      console.error("Erreur lors de la déconnexion :", error);
+    }
   };
+
   return (
     <div>
-      <button
-        className="bdeconnection"
-        type="button"
-        onClick={handleReturnToApp}
-      >
-        Déconnection
-      </button>
+      <a href="/">
+        <button className="bdeconnection" type="button" onClick={handleLogout}>
+          Déconnection
+        </button>
+      </a>
       <Outlet />
     </div>
   );
 }
-
 export default LayoutDeconnect;

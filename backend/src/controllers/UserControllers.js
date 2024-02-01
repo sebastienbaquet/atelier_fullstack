@@ -120,6 +120,11 @@ const login = async (req, res, next) => {
     next(err);
   }
 };
+const logout = (req, res) => {
+  res.clearCookie("auth");
+
+  res.sendStatus(200);
+};
 
 // Ready to export the controller functions
 module.exports = {
@@ -129,4 +134,5 @@ module.exports = {
   edit,
   destroy,
   login,
+  logout,
 };

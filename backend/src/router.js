@@ -49,6 +49,7 @@ router.delete("/cars/:id", carControllers.destroy);
 router.delete("/motos/:id", motoControllers.destroy);
 
 router.post("/login", validateLogin, userControllers.login);
+router.post("/logout", userControllers.logout);
 
 // router.get("/cars", (req, res) => {
 //   client
