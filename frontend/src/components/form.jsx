@@ -34,6 +34,10 @@ function CarForm() {
     }
   };
   useEffect(() => {
+    console.info(formData);
+  }, [formData]);
+
+  useEffect(() => {
     getFonctions();
     getCars();
   }, []);
@@ -62,7 +66,7 @@ function CarForm() {
         brand: "",
         engine: "",
         image: "",
-        attribut_id: "",
+        fonction_id: "",
       });
       console.info("Nouvelle voiture ajouté:", response.data);
     } catch (error) {
