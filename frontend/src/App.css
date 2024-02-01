@@ -2,7 +2,7 @@ body {
   background-image: url("./assets/garage5.jpg");
   background-repeat: no-repeat;
   background-size: cover;
-  height: 100vh;
+  height: 100%;
 }
 .Nav {
   display: flex;

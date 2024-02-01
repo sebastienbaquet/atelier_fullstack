@@ -33,7 +33,7 @@ function Footer() {
           <TiSocialLinkedin className="socialIcon" />
         </a>
 
-        {connected.role === "user" && (
+        {connected.role === 0 && (
           <Link to="/Selec">
             <FaMotorcycle className="socialIcon" />
           </Link>

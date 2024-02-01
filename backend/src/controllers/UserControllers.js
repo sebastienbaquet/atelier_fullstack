@@ -1,6 +1,7 @@
 // Import access to database tables
 const tables = require("../tables");
 const { hash, verify } = require("../services/hash");
+const { createToken } = require("../services/jwt");
 
 // The B of BREAD - Browse (Read All) operation
 const browse = async (req, res, next) => {
@@ -105,7 +106,11 @@ const login = async (req, res, next) => {
     } else {
       const check = await verify(req.body.hashpassword, user.hashpassword);
       if (check) {
-        res.status(200).json({ id: user.id, email: user.email, role: "user" });
+        delete user.password;
+        res
+          .cookie("auth", createToken(user), { httpOnly: true })
+          .status(200)
+          .json({ id: user.id, email: user.email, role: user.role });
       } else {
         res.sendStatus(403);
       }
