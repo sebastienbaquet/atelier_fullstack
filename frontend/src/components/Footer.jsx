@@ -1,4 +1,5 @@
-import React from "react";
+import { Link } from "react-router-dom";
+import { React, useContext } from "react";
 import { SlSocialFacebook } from "react-icons/sl";
 import {
   TiSocialLinkedin,
@@ -6,10 +7,12 @@ import {
   TiSocialInstagram,
 } from "react-icons/ti";
 import { FaMotorcycle } from "react-icons/fa";
+import { AuthContext } from "./context/AuthContext";
 import "./Footer.css";
-import { Link } from "react-router-dom";
 
 function Footer() {
+  const { connected } = useContext(AuthContext);
+
   return (
     <footer className="socialCtn">
       <div className="social">
@@ -29,9 +32,13 @@ function Footer() {
         >
           <TiSocialLinkedin className="socialIcon" />
         </a>
-        <Link to="/Selec">
-          <FaMotorcycle className="socialIcon" />
-        </Link>
+
+        {connected.role === "user" && (
+          <Link to="/Selec">
+            <FaMotorcycle className="socialIcon" />
+          </Link>
+        )}
+
         <a
           aria-label="instagram"
           href="https://www.instagram.com/"

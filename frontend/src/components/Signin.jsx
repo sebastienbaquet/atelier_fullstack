@@ -1,14 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import connexion from "../services/connexion";
 import "./Signin.css";
+import { AuthContext } from "./context/AuthContext";
 
 function Signin() {
   const [formData, setFormData] = useState({
     email: "",
     hashpassword: "",
   });
+  const { setConnected } = useContext(AuthContext);
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
   const handleChange = (e) => {
@@ -31,8 +33,8 @@ function Signin() {
     e.preventDefault();
     try {
       const response = await connexion.post(`/login`, formData);
-
       if (response.status === 200) {
+        setConnected(response.data);
         showToast("Super on y va ");
         console.info("utilisateur ok!");
         setTimeout(() => {
