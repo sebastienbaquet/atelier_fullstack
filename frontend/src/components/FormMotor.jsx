@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
+import { toast } from "react-toastify";
 import connexion from "../services/connexion";
 import "./FormMotor.css";
+import "react-toastify/dist/ReactToastify.css";
 
 function MotoForm() {
   const [formData, setFormData] = useState({
@@ -75,11 +77,29 @@ function MotoForm() {
 
   const deleteMoto = async (id) => {
     try {
-      const response = await connexion.delete(`/Motos/${id}`);
-      getMotos();
-      console.info("Nouvelle voiture effacer:", response.data);
+      await toast.promise(
+        async (resolve, reject) => {
+          const confirm = window.confirm(
+            "Voulez-vous vraiment supprimer cette moto ?"
+          );
+
+          if (confirm) {
+            const response = await connexion.delete(`/Motos/${id}`);
+            getMotos();
+            resolve("Moto supprimée avec succès !");
+            console.info("Nouvelle moto effacée :", response.data);
+          } else {
+            reject("Suppression annulée.");
+          }
+        },
+        {
+          pending: "Attente de confirmation...",
+          success: { duration: 2000 },
+          error: { duration: 2000 },
+        }
+      );
     } catch (error) {
-      console.error("Erreur lors de la suppression d'une voiture':", error);
+      console.error("Erreur lors de la suppression d'une moto :", error);
     }
   };
 

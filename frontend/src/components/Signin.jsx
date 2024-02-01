@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import connexion from "../services/connexion";
 import "./Signin.css";
@@ -8,6 +9,7 @@ function Signin() {
     email: "",
     hashpassword: "",
   });
+  const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -16,13 +18,22 @@ function Signin() {
       [name]: value,
     });
   };
-
+  const handleTogglePassword = () => {
+    setShowPassword(!showPassword);
+  };
+  const showToast = (message) => {
+    toast.success(message);
+  };
+  const showToastError = (message) => {
+    toast.error(message);
+  };
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const response = await connexion.post(`/login`, formData);
 
       if (response.status === 200) {
+        showToast("Super on y va ");
         console.info("utilisateur ok!");
         setTimeout(() => {
           navigate("/Selec");
@@ -32,6 +43,7 @@ function Signin() {
       }
     } catch (error) {
       console.error("Error:", error.message);
+      showToastError("Erreur");
     }
   };
 
@@ -57,7 +69,7 @@ function Signin() {
             Password:
             <input
               className="input"
-              type="password"
+              type={showPassword ? "text" : "password"}
               name="hashpassword"
               value={formData.hashpassword}
               onChange={handleChange}
@@ -65,11 +77,20 @@ function Signin() {
             />
           </label>
           <br />
+          <button
+            className="signin"
+            type="button"
+            onClick={handleTogglePassword}
+          >
+            {showPassword ? "Cacher password" : "Afficher password"}
+          </button>
+          <br />
           <button className="signin" type="submit">
             connecter
           </button>
         </form>
       </div>
+      <ToastContainer />
     </div>
   );
 }

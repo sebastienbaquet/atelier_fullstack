@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
+import { toast } from "react-toastify";
 import connexion from "../services/connexion";
 import "./FormMotor.css";
+import "react-toastify/dist/ReactToastify.css";
 
 function CarForm() {
   const [formData, setFormData] = useState({
@@ -32,6 +34,10 @@ function CarForm() {
     }
   };
   useEffect(() => {
+    console.info(formData);
+  }, [formData]);
+
+  useEffect(() => {
     getFonctions();
     getCars();
   }, []);
@@ -60,7 +66,7 @@ function CarForm() {
         brand: "",
         engine: "",
         image: "",
-        attribut_id: "",
+        fonction_id: "",
       });
       console.info("Nouvelle voiture ajouté:", response.data);
     } catch (error) {
@@ -70,9 +76,26 @@ function CarForm() {
 
   const deleteCar = async (id) => {
     try {
-      const response = await connexion.delete(`/cars/${id}`);
-      getCars();
-      console.info("Nouvelle voiture effacer:", response.data);
+      await toast.promise(
+        async (resolve, reject) => {
+          const confirm = window.confirm(
+            "Voulez-vous vraiment supprimer cette voiture ?"
+          );
+          if (confirm) {
+            const response = await connexion.delete(`/cars/${id}`);
+            getCars();
+            resolve("voiture supprimée avec succès !");
+            console.info("Nouvelle voiture effacer:", response.data);
+          } else {
+            reject("Suppression annulée.");
+          }
+        },
+        {
+          pending: "Attente de confirmation...",
+          success: { duration: 2000 },
+          error: { duration: 2000 },
+        }
+      );
     } catch (error) {
       console.error("Erreur lors de la suppression d'une voiture':", error);
     }
