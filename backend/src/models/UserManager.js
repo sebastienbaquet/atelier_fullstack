@@ -25,7 +25,7 @@ class userManager extends AbstractManager {
   async read(email) {
     // Execute the SQL SELECT query to retrieve a specific user by its ID
     const [rows] = await this.database.query(
-      `SELECT email
+      `SELECT *
     FROM ${this.table}
     WHERE email = ?`,
       [email]
