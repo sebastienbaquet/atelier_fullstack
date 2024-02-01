@@ -1,6 +1,6 @@
 // Import access to database tables
-const argon2 = require("argon2");
 const tables = require("../tables");
+const { hash, verify } = require("../services/hash");
 
 // The B of BREAD - Browse (Read All) operation
 const browse = async (req, res, next) => {
@@ -62,7 +62,8 @@ const add = async (req, res, next) => {
 
   try {
     // Hash the user's password using Argon2
-    const hashedPassword = await argon2.hash(user.password);
+
+    const hashedPassword = await hash(user.password);
 
     // Insert the user into the database
     const insertId = await tables.user.create(user.email, hashedPassword);
@@ -97,13 +98,17 @@ const login = async (req, res, next) => {
   try {
     // Fetch a specific user from the database based on the provided ID
     const user = await tables.user.read(req.body.email);
-
     // If the user is not found, respond with HTTP 404 (Not Found)
     // Otherwise, respond with the user in JSON format
     if (user == null) {
-      res.sendStatus(404);
+      res.sendStatus(403);
     } else {
-      res.json(user);
+      const check = await verify(req.body.hashpassword, user.hashpassword);
+      if (check) {
+        res.status(200).json({ id: user.id, email: user.email, role: "user" });
+      } else {
+        res.sendStatus(403);
+      }
     }
   } catch (err) {
     // Pass any errors to the error-handling middleware
