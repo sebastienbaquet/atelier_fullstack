@@ -14,6 +14,7 @@ import PageOneFormCar from "./pages/PageOneFormCar";
 import PageSelec from "./pages/PageSelec";
 import Layout from "./components/Layout";
 import PageHome from "./pages/PageHome";
+import AuthProvider from "./components/context/AuthContext";
 import LayoutDeconnect from "./components/LayoutDeconnect";
 
 const router = createBrowserRouter([
@@ -101,6 +102,8 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
   </React.StrictMode>
 );
