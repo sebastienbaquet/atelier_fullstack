@@ -16,6 +16,7 @@ const validateUser = require("./validators/validateUser");
 const validateLogin = require("./validators/validateLogin");
 const validateCar = require("./validators/validateCar");
 const validateMoto = require("./validators/validateMoto");
+const checkCredentials = require("./controllers/middleware/checkCredentials");
 
 // Route to get a list of items
 router.get("/cars", carControllers.browse);
@@ -35,7 +36,7 @@ router.get("/cars/:id", carControllers.read);
 router.get("/motos/:id", motoControllers.read);
 
 // Route to add a new item
-router.post("/cars", validateCar, carControllers.add);
+router.post("/cars", checkCredentials, validateCar, carControllers.add);
 router.post("/motos", validateMoto, motoControllers.add);
 router.post("/users", validateUser, userControllers.add);
 

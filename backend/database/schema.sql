@@ -3,7 +3,8 @@
 create table user(
   id INT PRIMARY KEY AUTO_INCREMENT,
    email  VARCHAR(255) NOT NULL UNIQUE,
-   hashpassword VARCHAR(255) NOT NULL
+   hashpassword VARCHAR(255) NOT NULL,
+   role BOOLEAN DEFAULT 0
 );
 
 
