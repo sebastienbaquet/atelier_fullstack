@@ -8,13 +8,11 @@
   align-items: center;
   justify-content: center;
   justify-content: space-around;
-  margin-right: 10rem;
   overflow-y: auto;
   height: auto;
 }
 .form_all {
   width: 20rem;
-  margin: auto;
   padding: 20px;
   border: solid 4px rgb(129, 124, 124);
   color: white;
@@ -23,7 +21,6 @@
   align-items: center;
   background-color: rgb(29, 33, 33);
   border-radius: 20px;
-  margin-bottom: 20rem;
 }
 .form_label {
   padding: 2rem;
@@ -69,7 +66,7 @@
   align-items: center;
   width: 600px;
   height: auto;
-  margin-bottom: 20rem;
+  margin-bottom: 2rem;
 }
 .title_modif {
   color: rgb(129, 124, 124);
