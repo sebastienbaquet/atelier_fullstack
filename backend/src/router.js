@@ -45,8 +45,8 @@ router.post("/users", validateUser, userControllers.add);
 router.put("/cars/:id", checkCredentials, validateCar, carControllers.edit);
 router.put("/motos/:id", checkCredentials, validateMoto, motoControllers.edit);
 
-router.delete("/cars/:id", carControllers.destroy);
-router.delete("/motos/:id", motoControllers.destroy);
+router.delete("/cars/:id", checkCredentials, carControllers.destroy);
+router.delete("/motos/:id", checkCredentials, motoControllers.destroy);
 
 router.post("/login", validateLogin, userControllers.login);
 router.post("/logout", userControllers.logout);
