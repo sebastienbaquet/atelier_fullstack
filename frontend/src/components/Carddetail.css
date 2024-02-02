@@ -28,7 +28,8 @@ a {
   border-radius: 10px;
 }
 .button_PageFom {
-  margin: -5rem 1rem;
+  margin-top: 20px;
+  margin-left: 10px;
   padding: 5px;
   height: 5vh;
   color: white;
