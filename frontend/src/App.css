@@ -2,7 +2,7 @@ body {
   background-image: url("./assets/garage5.jpg");
   background-repeat: no-repeat;
   background-size: cover;
-  height: 100%;
+  height: 140vh;
 }
 .Nav {
   display: flex;
@@ -37,6 +37,9 @@ body {
   display: flex;
   align-items: center;
 }
+.containerLay {
+  width: 100%;
+}
 
 @media screen and (max-width: 600px) {
   .Nav {
@@ -45,6 +48,12 @@ body {
     align-items: center;
   }
 }
-.containerLay {
-  width: 100%;
+@media screen and (max-width: 440px) {
+  .Nav_button {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+  }
 }

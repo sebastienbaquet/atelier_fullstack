@@ -37,16 +37,16 @@ router.get("/motos/:id", motoControllers.read);
 
 // Route to add a new item
 router.post("/cars", checkCredentials, validateCar, carControllers.add);
-router.post("/motos", validateMoto, motoControllers.add);
+router.post("/motos", checkCredentials, validateMoto, motoControllers.add);
 router.post("/users", validateUser, userControllers.add);
 
 // Route to update a specific item by ID
 
-router.put("/cars/:id", validateCar, carControllers.edit);
-router.put("/motos/:id", validateMoto, motoControllers.edit);
+router.put("/cars/:id", checkCredentials, validateCar, carControllers.edit);
+router.put("/motos/:id", checkCredentials, validateMoto, motoControllers.edit);
 
-router.delete("/cars/:id", carControllers.destroy);
-router.delete("/motos/:id", motoControllers.destroy);
+router.delete("/cars/:id", checkCredentials, carControllers.destroy);
+router.delete("/motos/:id", checkCredentials, motoControllers.destroy);
 
 router.post("/login", validateLogin, userControllers.login);
 router.post("/logout", userControllers.logout);
